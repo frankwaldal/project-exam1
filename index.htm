@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>A Mars Adventure</title>
+        <link href="css/style.css" rel="stylesheet">
+    </head>
+    <body>
+        <div id="indexBackground">
+            <img src="img/2016_-_01-26751237322_ceb6d56235_o_1.jpg" draggable="false">
+        </div>
+        <header>
+            <h1>A Mars Adventure</h1>
+            <ul>
+                <li class="current">Home</li>
+                <li><a href="spacex.htm">About SpaceX</a></li>
+                <li><a href="launches.htm">Launches</a></li>
+                <li><a href="rockets.htm">Rockets</a></li>
+            </ul>
+        </header>
+        <main id="viewHeight" class="scrollBox gridContainer">
+            <img src="https://www.spacex.com/sites/spacex/files/styles/new_gallery_large/public/first_reflight_-_11_ses10_l-0_-_landing_cam02_-_040117_-_img_968528.jpg?itok=rtEY-It9" alt="Rocket prepares to land for the second time" class="spaceXImg pic2">
+            <img src="https://www.spacex.com/sites/spacex/files/styles/new_gallery_large/public/39a_05_crs10_-_lminus2_-_021617_-_bi0i8684.jpg?itok=FMv7CDPj" alt="Launch complex 39A at sunset" class="spaceXImg pic1">
+            <form class="form">
+                <label>Name:
+                    <input type="text" id="formName" placeholder="Your name">
+                </label>
+                <label>Email:
+                    <input type="email" id="formEmail" placeholder="someone@example.com">
+                </label>
+                <label>Message:
+                    <textarea id="formMessage" placeholder="Your message"></textarea>
+                </label>
+                <div class="buttons">
+                    <input type="reset" id="reset">
+                    <input type="submit" id="submit">
+                </div>
+            </form>
+        </main>
+    </body>
+</html>

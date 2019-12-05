@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>A Mars Adventure - ISS</title>
+        <link href="css/style.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+            integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+            crossorigin=""/>
+        <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+            integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+            crossorigin=""></script>
+    </head>
+    <body>
+        <header class="headerBg">
+            <h1><a href="index.htm">A Mars Adventure</a></h1>
+            <ul>
+                <li><a href="index.htm">Home</a></li>
+                <li><a href="spacex.htm">About SpaceX</a></li>
+                <li><a href="launches.htm">Launches</a></li>
+                <li><a href="rockets.htm">Rockets</a></li>
+            </ul>
+        </header>
+        <main>
+            <h3>Current location of the International Space Station</h3>
+            <div id="map">
+            </div>
+            <button id="refresh">Refresh position</button>
+            <h3 id="passingHeading">Next passings at your location</h3>
+            <ul id="passing">
+            </ul>
+            <h3>Current crew</h3>
+            <ul id="crew">
+            </ul>
+        </main>
+        <script src="js/iss.js"></script>
+    </body>
+</html>
