@@ -89,6 +89,15 @@ main {
     grid-template-areas: ". . . ." "text1 . pic1 pic1" ". text2 pic1 pic1" "pic2 pic2 form form" "pic2 pic2 form form" ". . . .";
 }
 
+.flexContainer {
+    display: flex;
+    justify-content: space-around;
+}
+
+.flexContainer div {
+    flex: 1;
+}
+
 .pic1 {
     grid-area: pic1;
 }
@@ -150,4 +159,8 @@ textarea {
 #map {
     width: 600px;
     height: 600px;
+}
+
+.fc-event {
+    cursor: pointer;
 }

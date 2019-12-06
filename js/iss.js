@@ -19,7 +19,7 @@ var mapIcon = L.icon({
 var marker = L.marker([0, 0], {icon: mapIcon}).addTo(map);
 
 function issPosition() {
-    fetch('https://cors-anywhere.herokuapp.com/http://api.open-notify.org/iss-now.json')
+    fetch('https://frankwaldal-eval-test.apigee.net/open-notify/iss-now.json')
         .then(resolve => {
             resolve.json().then(respond => {
                 map.setView([respond.iss_position.latitude, respond.iss_position.longitude], 3);
@@ -53,7 +53,7 @@ function issPassing() {
 }
 
 function issCrew() {
-    fetch('https://cors-anywhere.herokuapp.com/http://api.open-notify.org/astros.json')
+    fetch('https://frankwaldal-eval-test.apigee.net/open-notify/astros.json')
         .then(resolve => {
             resolve.json().then(respond => {
                 var crew = '';

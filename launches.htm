@@ -4,9 +4,16 @@
         <meta charset="utf-8">
         <title>A Mars Adventure - SpaceX past and future launches</title>
         <link href="css/style.css" rel="stylesheet">
+        <link href="https://unpkg.com/@fullcalendar/core/main.min.css" rel="stylesheet">
+        <link href="https://unpkg.com/@fullcalendar/daygrid/main.min.css" rel="stylesheet">
+        <script src="https://unpkg.com/@fullcalendar/core/main.min.js"></script>
+        <script src="https://unpkg.com/@fullcalendar/daygrid/main.min.js"></script>
     </head>
     <body>
-        <header class="headerBg">
+        <div id="indexBackground">
+            <img src="img/2012_-_9_crs1_launch.jpg" draggable="false">
+        </div>
+        <header>
             <h1><a href="index.htm">A Mars Adventure</a></h1>
             <ul>
                 <li><a href="index.htm">Home</a></li>
@@ -15,7 +22,16 @@
                 <li><a href="rockets.htm">Rockets</a></li>
             </ul>
         </header>
-        <main>
+        <main id="viewHeight" class="scrollBox flexContainer">
+            <div>
+                <h2>Future launches</h2>
+                <div id="calendar">
+                </div>
+            </div>
+            <div>
+                <h2>Past launches</h2>
+            </div>
         </main>
+        <script src="js/launches.js"></script>
     </body>
 </html>
