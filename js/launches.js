@@ -127,6 +127,20 @@ function pastLaunchPopulate() {
 
 }
 
+function expandInfo() {
+    if (this.nextSibling.nextSibling.style.display === 'flex') {
+        this.nextSibling.nextSibling.style.display = 'none';
+        this.childNodes[1].style.transform = 'rotateX(0deg)';
+    } else {
+        this.nextSibling.nextSibling.style.display = 'flex';
+        this.childNodes[1].style.transform = 'rotateX(90deg)';
+    }
+}
+
 calendarInit();
 
 pastLaunchPopulate();
+
+document.querySelectorAll('.openInfo').forEach(item => {
+    item.addEventListener('click', expandInfo);
+});
