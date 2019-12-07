@@ -22,7 +22,7 @@
                 <li><a href="rockets.htm">Rockets</a></li>
             </ul>
         </header>
-        <main id="viewHeight" class="scrollBox flexContainer">
+        <main id="viewHeight" class="flexContainer scrollBox">
             <div class="flexElement">
                 <h2 class="centerHeader">Future launches</h2>
                 <div id="calendar">
@@ -32,63 +32,16 @@
             </div>
             <div class="flexElement">
                 <h2 class="centerHeader">Past launches</h2>
-                <div class="pastLaunch">
-                    <h3>FalconSat</h3>
-                    <div class="openInfo">
-                        <span class="vertSpan"></span>
-                        <span class="horiSpan"></span>
-                    </div>
-                    <div class="hidden">
-                        <p>Engine failure at 33 seconds and loss of vehicle</p><br>
-                        <p>Launchdate: Mar 03 2006</p>
-                        <p>Launchtime: 22:30:00</p>
-                        <p>Launchsite: Kwajalein Atoll Omelek Island</p>
-                        <br>
-                        <p>Rocket: Falcon 1</p>
-                        <p>Core: Merlin1A</p>
-                        <p>Payload: Satellite</p>
-                        <p>Payload manufacturer: SSTL</p>
-                        <p>Payload customer: DARPA</p>
-                        <p>Orbit: LEO - low-earth</p>
-                        <br>
-                        <p>Launch success: No</p>
-                        <p>Failure reason: merlin engine failure</p>
-                        <br>
-                        <p><a href="https://www.space.com/2196-spacex-inaugural-falcon-1-rocket-lost-launch.html" target="_blank">Article</a></p>
-                        <p><a href="https://en.wikipedia.org/wiki/DemoSat" target="_blank">Wikipedia</a></p>
-                        <iframe width="100%" height="500px" src="https://www.youtube.com/embed/0a_00nJ_Y88" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    </div>
-                </div>
-                <div class="pastLaunch">
-                    <h3>FalconSat</h3>
-                    <div class="openInfo">
-                        <span class="vertSpan"></span>
-                        <span class="horiSpan"></span>
-                    </div>
-                    <div class="hidden">
-                        <p>Engine failure at 33 seconds and loss of vehicle</p><br>
-                        <p>Launchdate: Mar 03 2006</p>
-                        <p>Launchtime: 22:30:00</p>
-                        <p>Launchsite: Kwajalein Atoll Omelek Island</p>
-                        <br>
-                        <p>Rocket: Falcon 1</p>
-                        <p>Core: Merlin1A</p>
-                        <p>Payload: Satellite</p>
-                        <p>Payload manufacturer: SSTL</p>
-                        <p>Payload customer: DARPA</p>
-                        <p>Orbit: LEO - low-earth</p>
-                        <br>
-                        <p>Launch success: No</p>
-                        <p>Failure reason: merlin engine failure</p>
-                        <br>
-                        <p><a href="https://www.space.com/2196-spacex-inaugural-falcon-1-rocket-lost-launch.html" target="_blank">Article</a></p>
-                        <p><a href="https://en.wikipedia.org/wiki/DemoSat" target="_blank">Wikipedia</a></p>
-                        <iframe width="100%" height="500px" src="https://www.youtube.com/embed/0a_00nJ_Y88" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <div  id="pastLaunchContainer">
+                    <div class="spinner-error">
+                        <span class="spinner">Loading...</span>
                     </div>
                 </div>
             </div>
         </main>
+        <button id="up">&#x2B06;</button>
         <script src="js/launches.js"></script>
+        <script src="js/scrollDetection.js"></script>
         <script src="//cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
     </body>
 </html>

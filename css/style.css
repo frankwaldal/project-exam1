@@ -143,6 +143,24 @@ main {
     height: calc(100vh - 132px);
 }
 
+#up {
+    position: fixed;
+    bottom: 10px;
+    left: 10px;
+    font-size: 26px;
+    border-radius: 50%;
+    background: #403e3e;
+    color: inherit;
+    cursor: pointer;
+    padding: 3px;
+    width: 1.7em;
+    height: 1.7em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    display: none;
+}
+
 label {
     display: flex;
     align-items: center;
@@ -210,6 +228,9 @@ textarea {
     background: #403e3e;
     color: inherit;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 #event p, .pastLaunch p {
@@ -222,7 +243,7 @@ textarea {
     position: relative;
 }
 
-.pastLaunch:nth-child(2) {
+.pastLaunch:first-child {
     margin-top: 80px;
 }
 
@@ -235,10 +256,10 @@ textarea {
 
 .openInfo {
     position: absolute;
-    top: 5px;
-    right: 5px;
-    width: 50px;
-    height: 50px;
+    top: 8px;
+    right: 8px;
+    width: 44px;
+    height: 44px;
     cursor: pointer;
 }
 
@@ -248,15 +269,15 @@ textarea {
 }
 
 .horiSpan {
-    height: 8px;
-    width: 50px;
-    top: 21px;
+    height: 6px;
+    width: 44px;
+    top: 19px;
 }
 
 .vertSpan {
-    height: 50px;
-    width: 8px;
-    left: 21px;
+    height: 44px;
+    width: 6px;
+    left: 19px;
     transition: 0.2s ease-in;
     transform: rotateX(0deg);
 }
@@ -265,4 +286,68 @@ textarea {
     display: none;
     flex-direction: column;
     align-items: center;
+}
+
+.hidden a {
+    color: inherit;
+    font-style: italic;
+}
+
+.spinner-error {
+    margin-top: 80px;
+    margin-left: 15px;
+}
+
+@-moz-keyframes spinner {
+  0% {
+    -moz-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -moz-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@-webkit-keyframes spinner {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@keyframes spinner {
+  0% {
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -moz-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+/* :not(:required) hides this rule from IE9 and below */
+.spinner:not(:required) {
+  -moz-animation: spinner 1500ms infinite linear;
+  -webkit-animation: spinner 1500ms infinite linear;
+  animation: spinner 1500ms infinite linear;
+  -moz-border-radius: 0.5em;
+  -webkit-border-radius: 0.5em;
+  border-radius: 0.5em;
+  -moz-box-shadow: rgba(237, 221, 157, 0.5) 1.5em 0 0 0, rgba(237, 221, 157, 0.5) 1.1em 1.1em 0 0, rgba(237, 221, 157, 0.5) 0 1.5em 0 0, rgba(237, 221, 157, 0.5) -1.1em 1.1em 0 0, rgba(237, 221, 157, 0.5) -1.5em 0 0 0, rgba(237, 221, 157, 0.5) -1.1em -1.1em 0 0, rgba(237, 221, 157, 0.5) 0 -1.5em 0 0, rgba(237, 221, 157, 0.5) 1.1em -1.1em 0 0;
+  -webkit-box-shadow: rgba(237, 221, 157, 0.5) 1.5em 0 0 0, rgba(237, 221, 157, 0.5) 1.1em 1.1em 0 0, rgba(237, 221, 157, 0.5) 0 1.5em 0 0, rgba(237, 221, 157, 0.5) -1.1em 1.1em 0 0, rgba(237, 221, 157, 0.5) -1.5em 0 0 0, rgba(237, 221, 157, 0.5) -1.1em -1.1em 0 0, rgba(237, 221, 157, 0.5) 0 -1.5em 0 0, rgba(237, 221, 157, 0.5) 1.1em -1.1em 0 0;
+  box-shadow: rgba(237, 221, 157, 0.5) 1.5em 0 0 0, rgba(237, 221, 157, 0.5) 1.1em 1.1em 0 0, rgba(237, 221, 157, 0.5) 0 1.5em 0 0, rgba(237, 221, 157, 0.5) -1.1em 1.1em 0 0, rgba(237, 221, 157, 0.5) -1.5em 0 0 0, rgba(237, 221, 157, 0.5) -1.1em -1.1em 0 0, rgba(237, 221, 157, 0.5) 0 -1.5em 0 0, rgba(237, 221, 157, 0.5) 1.1em -1.1em 0 0;
+  display: inline-block;
+  font-size: 10px;
+  width: 1em;
+  height: 1em;
+  margin: 1.5em;
+  overflow: hidden;
+  text-indent: 100%;
 }
