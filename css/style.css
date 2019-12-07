@@ -94,8 +94,14 @@ main {
     justify-content: space-around;
 }
 
-.flexContainer div {
+.flexElement {
     flex: 1;
+    position: relative;
+    margin: 0 30px;
+}
+
+.centerHeader {
+    text-align: center;
 }
 
 .pic1 {
@@ -163,4 +169,49 @@ textarea {
 
 .fc-event {
     cursor: pointer;
+}
+
+.fc-day.fc-today {
+    background: rgba(252, 248, 227, 0.2)!important;
+}
+
+#event {
+    position: absolute;
+    top: 60px;
+    margin: 10px auto;
+    padding: 30px;
+    width: calc(100% - 80px);
+    z-index: 1111;
+    background: #0b0d19;
+    border: 10px solid rgba(237, 221, 157, 0.38);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform .2s ease-in;
+    transform-origin: left;
+}
+
+.closed {
+    transform: scaleX(0);
+}
+
+.open {
+    transform: scaleX(1);
+}
+
+#close {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    border-radius: 50%;
+    padding: 6px;
+    width: 2em;
+    height: 2em;
+    background: #403e3e;
+    color: inherit;
+    cursor: pointer;
+}
+
+#event p {
+    margin: 5px;
 }
