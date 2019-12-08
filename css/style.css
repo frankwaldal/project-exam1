@@ -209,12 +209,9 @@ textarea {
     background: rgba(252, 248, 227, 0.2)!important;
 }
 
-#event, #eventRight {
-    position: absolute;
-    top: 60px;
+#event, #eventRight, #eventLeft {
     margin: 10px auto;
     padding: 30px;
-    width: calc(100% - 80px);
     z-index: 1111;
     background: #0b0d19;
     border: 10px solid rgba(237, 221, 157, 0.38);
@@ -225,6 +222,27 @@ textarea {
 }
 
 #event {
+    position: absolute;
+    top: 60px;
+    width: calc(100% - 80px);
+}
+
+#eventRight, #eventLeft {
+    position: fixed;
+    top: 200px;
+    height: calc(100vh - (260px + 30px));
+    width: calc((100vw / 2) - 170px);
+}
+
+#eventLeft {
+    left: 60px;
+}
+
+#eventRight {
+    right: 60px;
+}
+
+#event, #eventLeft {
     transform-origin: left;
 }
 
@@ -256,9 +274,13 @@ textarea {
     justify-content: center;
 }
 
-#event p, .detailContainer p {
+#event p, .detailContainer p, #eventRight p, #eventLeft p {
     margin: 5px;
     line-height: 1.5em;
+}
+
+iframe {
+    min-height: 100%;
 }
 
 .detailContainer {
@@ -312,7 +334,7 @@ textarea {
     align-items: center;
 }
 
-.hidden a, #event a, #eventRight a {
+.hidden a, #event a, #eventRight a, #eventLeft a {
     color: inherit;
     font-style: italic;
 }

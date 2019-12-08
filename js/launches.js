@@ -37,9 +37,17 @@ function expandEvent() {
                 }
                 var orbit = '';
                 if (respond.rocket.second_stage.payloads[0].orbit_params.regime === null || respond.rocket.second_stage.payloads[0].orbit_params.regime === undefined) {
-                    orbit = `${respond.rocket.second_stage.payloads[0].orbit}`
+                    if (respond.rocket.second_stage.payloads[0].orbit === "ISS") {
+                        orbit = `<a href="iss.htm">${respond.rocket.second_stage.payloads[0].orbit}</a>`;
+                    } else {
+                        orbit = `${respond.rocket.second_stage.payloads[0].orbit}`;
+                    }
                 } else {
-                    orbit = `${respond.rocket.second_stage.payloads[0].orbit} - ${respond.rocket.second_stage.payloads[0].orbit_params.regime}`
+                    if (respond.rocket.second_stage.payloads[0].orbit === "ISS") {
+                        orbit = `<a href="iss.htm">${respond.rocket.second_stage.payloads[0].orbit}</a> - ${respond.rocket.second_stage.payloads[0].orbit_params.regime}`;
+                    } else {
+                        orbit = `${respond.rocket.second_stage.payloads[0].orbit} - ${respond.rocket.second_stage.payloads[0].orbit_params.regime}`;
+                    }
                 }
                 var content = `<button id="close">X</button>
                     <h3>${respond.mission_name}</h3>
@@ -174,9 +182,17 @@ function pastLaunchPopulate() {
                     }
                     var orbit = '';
                     if (respond[i].rocket.second_stage.payloads[0].orbit_params.regime === null || respond[i].rocket.second_stage.payloads[0].orbit_params.regime === undefined) {
-                        orbit = `${respond[i].rocket.second_stage.payloads[0].orbit}`
+                        if (respond[i].rocket.second_stage.payloads[0].orbit === 'ISS') {
+                            orbit = `<a href="iss.htm">${respond[i].rocket.second_stage.payloads[0].orbit}</a>`;
+                        } else {
+                            orbit = `${respond[i].rocket.second_stage.payloads[0].orbit}`;
+                        }
                     } else {
-                        orbit = `${respond[i].rocket.second_stage.payloads[0].orbit} - ${respond[i].rocket.second_stage.payloads[0].orbit_params.regime}`
+                        if (respond[i].rocket.second_stage.payloads[0].orbit === 'ISS') {
+                            orbit = `<a href="iss.htm">${respond[i].rocket.second_stage.payloads[0].orbit}</a> - ${respond[i].rocket.second_stage.payloads[0].orbit_params.regime}`;
+                        } else {
+                            orbit = `${respond[i].rocket.second_stage.payloads[0].orbit} - ${respond[i].rocket.second_stage.payloads[0].orbit_params.regime}`;
+                        }
                     }
                     var success = '';
                     if (respond[i].launch_success) {

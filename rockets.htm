@@ -23,31 +23,12 @@
                 <h2 class="centerHeader">Capsules</h2>
                 <div id="capsulesContainer">
                 </div>
-                <div id="event" class="closed">
+                <div id="eventLeft" class="closed">
                 </div>
             </div>
             <div class="flexElement">
                 <h2 class="centerHeader">Rocket Cores</h2>
                 <div id="coresContainer">
-                    <div class="detailContainer">
-                        <h3>B1021</h3>
-                        <div class="openInfo">
-                            <span class="vertSpan"></span>
-                            <span class="horiSpan"></span>
-                        </div>
-                        <div class="hidden">
-                            <p>First drone ship landing, first orbital booster to be reflown, first orbital booster to be landed twice, will be given as a gift to Cape Canaveral</p><br>
-                            <p>First launchdate: Apr 08 2016</p>
-                            <p>First launchtime: 20:43</p>
-                            <br>
-                            <p>Flights: <i class="flight028 flightsRight">CRS-8</i> - <i class="flight038 flightsRight">SES-10</i></p>
-                            <br>
-                            <p>Reuse: 1</p>
-                            <p>Landing attempts: 2</p>
-                            <p>Autonomous spaceport drone ship landings: 2</p>
-                            <p>Status: retired</p>
-                        </div>
-                    </div>
                 </div>
                 <div id="eventRight" class="closed">
                 </div>
@@ -59,10 +40,9 @@
         <script src="js/scrollDetection.js"></script>
         <script src="//cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
         <script>
-            document.querySelectorAll('.flightsRight').forEach(item => {
-                item.addEventListener('click', rightExpandEvent);
-            });
             capsulesPopulate();
+
+            coresPopulate();
         </script>
     </body>
 </html>

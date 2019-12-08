@@ -33,9 +33,18 @@ function leftExpandEvent() {
                 }
                 var orbit = '';
                 if (respond.rocket.second_stage.payloads[0].orbit_params.regime === null || respond.rocket.second_stage.payloads[0].orbit_params.regime === undefined) {
-                    orbit = `${respond.rocket.second_stage.payloads[0].orbit}`
+                    if (respond.rocket.second_stage.payloads[0].orbit === 'ISS') {
+                        orbit = `<a href="iss.htm">${respond.rocket.second_stage.payloads[0].orbit}</a>`;
+                    } else {
+                        orbit = `${respond.rocket.second_stage.payloads[0].orbit}`;
+                    }
                 } else {
-                    orbit = `${respond.rocket.second_stage.payloads[0].orbit} - ${respond.rocket.second_stage.payloads[0].orbit_params.regime}`
+                    if (respond.rocket.second_stage.payloads[0].orbit === 'ISS') {
+                        orbit = `<a href="iss.htm">${respond.rocket.second_stage.payloads[0].orbit}</a> - ${respond.rocket.second_stage.payloads[0].orbit_params.regime}`
+                    } else {
+                        orbit = `${respond.rocket.second_stage.payloads[0].orbit} - ${respond.rocket.second_stage.payloads[0].orbit_params.regime}`
+                    }
+
                 }
                 var success = '';
                 if (respond.launch_success) {
@@ -59,7 +68,7 @@ function leftExpandEvent() {
                 }
                 var youtube = '';
                 if (respond.links.youtube_id !== null || respond.links.youtube_id !== undefined) {
-                    youtube = `<iframe width="100%" height="500px" src="https://www.youtube.com/embed/${respond.links.youtube_id}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+                    youtube = `<iframe width="100%" src="https://www.youtube.com/embed/${respond.links.youtube_id}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
                 }
                 var content = `<button id="close">X</button>
                     <h3>${respond.mission_name}</h3>
@@ -78,27 +87,27 @@ function leftExpandEvent() {
                     <br>
                     ${links}
                     ${youtube}`;
-                document.querySelector('#event').innerHTML = content;
-                document.querySelector('#event').className = 'open';
+                document.querySelector('#eventLeft').innerHTML = content;
+                document.querySelector('#eventLeft').className = 'open scrollBox';
                 document.querySelector('#close').addEventListener('click', e => {
                     e.preventDefault();
-                    document.querySelector('#event').className = 'closed';
+                    document.querySelector('#eventLeft').className = 'closed';
                     setTimeout(function(){
-                        document.querySelector('#event').innerHTML = '';
+                        document.querySelector('#eventLeft').innerHTML = '';
                     },250);
                 });
             })
         })
         .catch(err => {
-            document.querySelector('#event').innerHTML = `<button id="close">X</button>
+            document.querySelector('#eventLeft').innerHTML = `<button id="close">X</button>
                 <p>Couldn't retrieve information about launch.</p>
                 <p>Error: ${err}</p>`
-                document.querySelector('#event').className = 'open';
+                document.querySelector('#eventLeft').className = 'open scrollBox';
                 document.querySelector('#close').addEventListener('click', e => {
                     e.preventDefault();
-                    document.querySelector('#event').className = 'closed';
+                    document.querySelector('#eventLeft').className = 'closed';
                     setTimeout(function(){
-                        document.querySelector('#event').innerHTML = '';
+                        document.querySelector('#eventLeft').innerHTML = '';
                     },250);
                 });
         })
@@ -139,9 +148,17 @@ function rightExpandEvent() {
                 }
                 var orbit = '';
                 if (respond.rocket.second_stage.payloads[0].orbit_params.regime === null || respond.rocket.second_stage.payloads[0].orbit_params.regime === undefined) {
-                    orbit = `${respond.rocket.second_stage.payloads[0].orbit}`
+                    if (respond.rocket.second_stage.payloads[0].orbit === 'ISS') {
+                        orbit = `<a href="iss.htm">${respond.rocket.second_stage.payloads[0].orbit}</a>`;
+                    } else {
+                        orbit = `${respond.rocket.second_stage.payloads[0].orbit}`;
+                    }
                 } else {
-                    orbit = `${respond.rocket.second_stage.payloads[0].orbit} - ${respond.rocket.second_stage.payloads[0].orbit_params.regime}`
+                    if (respond.rocket.second_stage.payloads[0].orbit === 'ISS') {
+                        orbit = `<a href="iss.htm">${respond.rocket.second_stage.payloads[0].orbit}</a> - ${respond.rocket.second_stage.payloads[0].orbit_params.regime}`;
+                    } else {
+                        orbit = `${respond.rocket.second_stage.payloads[0].orbit} - ${respond.rocket.second_stage.payloads[0].orbit_params.regime}`;
+                    }
                 }
                 var success = '';
                 if (respond.launch_success) {
@@ -165,7 +182,7 @@ function rightExpandEvent() {
                 }
                 var youtube = '';
                 if (respond.links.youtube_id !== null || respond.links.youtube_id !== undefined) {
-                    youtube = `<iframe width="100%" height="500px" src="https://www.youtube.com/embed/${respond.links.youtube_id}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+                    youtube = `<iframe width="100%" src="https://www.youtube.com/embed/${respond.links.youtube_id}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
                 }
                 var content = `<button id="closeRight">X</button>
                     <h3>${respond.mission_name}</h3>
@@ -185,7 +202,7 @@ function rightExpandEvent() {
                     ${links}
                     ${youtube}`;
                 document.querySelector('#eventRight').innerHTML = content;
-                document.querySelector('#eventRight').className = 'open';
+                document.querySelector('#eventRight').className = 'open scrollBox';
                 document.querySelector('#closeRight').addEventListener('click', e => {
                     e.preventDefault();
                     document.querySelector('#eventRight').className = 'closed';
@@ -199,7 +216,7 @@ function rightExpandEvent() {
             document.querySelector('#eventRight').innerHTML = `<button id="closeRight">X</button>
                 <p>Couldn't retrieve information about launch.</p>
                 <p>Error: ${err}</p>`
-                document.querySelector('#eventRight').className = 'open';
+                document.querySelector('#eventRight').className = 'open scrollBox';
                 document.querySelector('#closeRight').addEventListener('click', e => {
                     e.preventDefault();
                     document.querySelector('#eventRight').className = 'closed';
@@ -211,6 +228,9 @@ function rightExpandEvent() {
 }
 
 function capsulesPopulate() {
+    document.querySelectorAll('.openInfo').forEach(item => {
+        item.removeEventListener('click', expandInfo);
+    });
     fetch('https://api.spacexdata.com/v3/capsules')
         .then(resolve => {
             resolve.json().then(respond => {
@@ -264,25 +284,81 @@ function capsulesPopulate() {
 }
 
 function coresPopulate() {
-
+    document.querySelectorAll('.openInfo').forEach(item => {
+        item.removeEventListener('click', expandInfo);
+    });
+    fetch('https://api.spacexdata.com/v3/cores')
+        .then(resolve => {
+            resolve.json().then(respond => {
+                var content = '';
+                console.log(respond);
+                for (i=0;i<respond.length;i++) {
+                    var launchTime = '';
+                    if (respond[i].original_launch !== null) {
+                        var launch = new Date(respond[i].original_launch);
+                        launchTime = `<p>First launchdate: ${launch.toString().substring(4,15)}</p>
+                            <p>First launchtime: ${launch.toLocaleTimeString()}</p>`;
+                    }
+                    var details = '';
+                    if (respond[i].details !== null) {
+                        details = `<p>${respond[i].details}</p><br>`;
+                    }
+                    var flights = '';
+                    for (j=0;j<respond[i].missions.length;j++) {
+                        var flightNumber = respond[i].missions[j].flight
+                        flights += ` - <i class="flight${numeral(flightNumber).format('000')} flightsRight">${respond[i].missions[j].name}</i>`;
+                    }
+                    var reuseLanding = '';
+                    if (respond[i].reuse_count === 0) {
+                        reuseLanding += '<p>Reuse: No</p>';
+                    } else {
+                        reuseLanding += `<p>Reuse: ${respond[i].reuse_count}</p>`;
+                    }
+                    var landingAttempts = respond[i].rtls_attempts + respond[i].asds_attempts;
+                    if (landingAttempts !== 0) {
+                        reuseLanding += `<p>Landing attempts: ${landingAttempts}</p>`;
+                    }
+                    if (respond[i].rtls_landings === 0) {
+                        if (respond[i].asds_landings !== 0) {
+                            reuseLanding += `<p>Autonomous spaceport drone ship landings: ${respond[i].asds_landings}</p>`;
+                        }
+                    } else {
+                        reuseLanding += `<p>Return to launch site landings: ${respond[i].rtls_landings}</p>`;
+                        if (respond[i].asds_landings !== 0) {
+                            reuseLanding += `<p>Autonomous spaceport drone ship landings: ${respond[i].asds_landings}</p>`;
+                        }
+                    }
+                    content += `<div class="detailContainer">
+                        <h3>${respond[i].core_serial}</h3>
+                        <div class="openInfo">
+                            <span class="vertSpan"></span>
+                            <span class="horiSpan"></span>
+                        </div>
+                        <div class="hidden">
+                            ${details}
+                            ${launchTime}
+                            <br>
+                            <p>Flights: ${flights.substring(3)}</p>
+                            <br>
+                            ${reuseLanding}
+                            <p>Status: ${respond[i].status}</p>
+                        </div>
+                    </div>`;
+                }
+                document.querySelector('#coresContainer').innerHTML = content;
+                document.querySelectorAll('.flightsRight').forEach(item => {
+                    item.addEventListener('click', rightExpandEvent);
+                });
+                document.querySelectorAll('.openInfo').forEach(item => {
+                    item.addEventListener('click', expandInfo);
+                });
+            })
+        })
+        .catch(err => {
+            document.querySelector('#coresContainer').innerHTML = `<p>Sorry, we couldn't retrieve capsules now.</p>
+                <p>Error: ${err}</p>`;
+            document.querySelectorAll('.openInfo').forEach(item => {
+                item.addEventListener('click', expandInfo);
+            });
+        })
 }
-
-/*
-<div class="detailContainer">
-    <h3>Dragon 1.1 - C106</h3>
-    <div class="openInfo">
-        <span class="vertSpan"></span>
-        <span class="horiSpan"></span>
-    </div>
-    <div class="hidden">
-        <p>First Dragon capsule to be reused.</p><br>
-        <p>First launchdate: Sep 21 2014</p>
-        <p>First launchtime: 05:52</p>
-        <br>
-        <p>Flights: <i class="flight018 flights">CRS-4</i> - <i class="flight041 flights">CRS-11</i></p>
-        <br>
-        <p>Landings: 2</p>
-        <p>Status: Active</p>
-    </div>
-</div>
-*/
