@@ -12,7 +12,10 @@
             crossorigin=""></script>
     </head>
     <body>
-        <header class="headerBg">
+        <div id="pageBackground">
+            <img src="img/403a8184.jpg" draggable="false">
+        </div>
+        <header>
             <h1><a href="index.htm">A Mars Adventure</a></h1>
             <ul>
                 <li><a href="index.htm">Home</a></li>
@@ -21,18 +24,27 @@
                 <li><a href="rockets.htm">Rockets</a></li>
             </ul>
         </header>
-        <main>
-            <h3>Current location of the International Space Station</h3>
-            <div id="map">
+        <main id="viewHeight" class="scrollBox">
+            <h1 class="centerHeader">The Internation Space Station</h1>
+            <div class="singleContainer">
+                <p>ISS is a space station in low Earth orbit, and is a joint program between NASA, Roscosmos, JAXA, ESA and CSA.</p>
+                <blockquote>Source and more information: <a href="https://en.wikipedia.org/wiki/International_Space_Station">Wikipedia</a></blockquote>
+                <h3>Current location of the International Space Station</h3>
+                <div id="map">
+                </div>
+                <div class="buttonContainer">
+                    <button id="refresh">Refresh position</button>
+                </div>
+                <h3 id="passingHeading">Next passings at your location</h3>
+                <ul id="passing">
+                </ul>
+                <h3>Current crew</h3>
+                <ul id="crew">
+                </ul>
             </div>
-            <button id="refresh">Refresh position</button>
-            <h3 id="passingHeading">Next passings at your location</h3>
-            <ul id="passing">
-            </ul>
-            <h3>Current crew</h3>
-            <ul id="crew">
-            </ul>
         </main>
+        <button id="up">&#x2B06;</button>
+        <script src="js/scrollDetection.js"></script>
         <script src="js/iss.js"></script>
     </body>
 </html>

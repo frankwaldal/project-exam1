@@ -196,9 +196,46 @@ textarea {
     height: 8em;
 }
 
+.singleContainer {
+    padding: 30px 30px 30px 50px;
+    display: flex;
+    flex-direction: column;
+}
+
 #map {
-    width: 600px;
-    height: 600px;
+    width: 700px;
+    height: 500px;
+}
+
+.buttonContainer {
+    margin: 20px 10px;
+}
+
+#refresh {
+    height: 2.5em;
+    border-radius: 5px;
+    background: #403e3e;
+    font-size: 1.17em;
+    font-weight: bold;
+    color: inherit;
+    cursor: pointer;
+}
+
+.singleContainer p {
+    margin: 10px;
+}
+
+.singleContainer h3 {
+    margin-top: 30px;
+}
+
+blockquote {
+    margin: 10px 40px;
+}
+
+blockquote a, .hidden a, #event a, #eventRight a, #eventLeft a {
+    color: inherit;
+    font-style: italic;
 }
 
 .fc-event {
@@ -207,6 +244,10 @@ textarea {
 
 .fc-day.fc-today {
     background: rgba(252, 248, 227, 0.2)!important;
+}
+
+.noGridImg {
+    margin: 20px 0;
 }
 
 #event, #eventRight, #eventLeft {
@@ -332,11 +373,6 @@ iframe {
     display: none;
     flex-direction: column;
     align-items: center;
-}
-
-.hidden a, #event a, #eventRight a, #eventLeft a {
-    color: inherit;
-    font-style: italic;
 }
 
 .flights, .flightsRight {
