@@ -59,6 +59,9 @@ function expandEvent() {
                 document.querySelector('#close').addEventListener('click', e => {
                     e.preventDefault();
                     document.querySelector('#event').className = 'closed';
+                    setTimeout(function(){
+                        document.querySelector('#event').innerHTML = '';
+                    },250);
                 });
             })
         })
@@ -66,6 +69,14 @@ function expandEvent() {
             document.querySelector('#event').innerHTML = `<button id="close">X</button>
                 <p>Couldn't retrieve information about launch.</p>
                 <p>Error: ${err}</p>`
+                document.querySelector('#event').className = 'open';
+                document.querySelector('#close').addEventListener('click', e => {
+                    e.preventDefault();
+                    document.querySelector('#event').className = 'closed';
+                    setTimeout(function(){
+                        document.querySelector('#event').innerHTML = '';
+                    },250);
+                });
         })
 }
 
@@ -131,11 +142,8 @@ function pastLaunchPopulate() {
     fetch('https://api.spacexdata.com/v3/launches/past?sort=launch_date_utc&order=desc')
         .then(resolve => {
             resolve.json().then(respond => {
-                console.log(respond);
                 var content = '';
                 for (i=0;i<respond.length;i++) {
-                    console.log(i);
-                    console.log(respond[i]);
                     var launchTime = '';
                     if (respond[i].last_ll_launch_date === null || respond[i].last_ll_launch_date === undefined) {
                         var launch = new Date(respond[i].launch_date_utc);
@@ -194,7 +202,7 @@ function pastLaunchPopulate() {
                     if (respond[i].links.youtube_id !== null || respond[i].links.youtube_id !== undefined) {
                         youtube = `<iframe width="100%" height="500px" src="https://www.youtube.com/embed/${respond[i].links.youtube_id}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
                     }
-                    content += `<div class="pastLaunch">
+                    content += `<div class="detailContainer">
                         <h3>${respond[i].mission_name}</h3>
                         <div class="openInfo">
                             <span class="vertSpan"></span>
@@ -240,39 +248,3 @@ function expandInfo() {
         this.childNodes[1].style.transform = 'rotateX(90deg)';
     }
 }
-
-calendarInit();
-
-pastLaunchPopulate();
-
-
-
-/*
-<div class="pastLaunch">
-    <h3>FalconSat</h3>
-    <div class="openInfo">
-        <span class="vertSpan"></span>
-        <span class="horiSpan"></span>
-    </div>
-    <div class="hidden">
-        <p>Engine failure at 33 seconds and loss of vehicle</p><br>
-        <p>Launchdate: Mar 03 2006</p>
-        <p>Launchtime: 22:30:00</p>
-        <p>Launchsite: Kwajalein Atoll Omelek Island</p>
-        <br>
-        <p>Rocket: Falcon 1</p>
-        <p>Core: Merlin1A</p>
-        <p>Payload: Satellite</p>
-        <p>Payload manufacturer: SSTL</p>
-        <p>Payload customer: DARPA</p>
-        <p>Orbit: LEO - low-earth</p>
-        <br>
-        <p>Launch success: No</p>
-        <p>Failure reason: merlin engine failure</p>
-        <br>
-        <p><a href="https://www.space.com/2196-spacex-inaugural-falcon-1-rocket-lost-launch.html" target="_blank">Article</a></p>
-        <p><a href="https://en.wikipedia.org/wiki/DemoSat" target="_blank">Wikipedia</a></p>
-        <iframe width="100%" height="500px" src="https://www.youtube.com/embed/0a_00nJ_Y88" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-    </div>
-</div>
-*/

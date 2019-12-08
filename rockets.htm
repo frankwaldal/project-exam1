@@ -6,7 +6,10 @@
         <link href="css/style.css" rel="stylesheet">
     </head>
     <body>
-        <header class="headerBg">
+        <div id="pageBackground">
+            <img src="img/2012_-_9_crs1_launch.jpg" draggable="false">
+        </div>
+        <header>
             <h1><a href="index.htm">A Mars Adventure</a></h1>
             <ul>
                 <li><a href="index.htm">Home</a></li>
@@ -15,7 +18,51 @@
                 <li class="current">Rockets</li>
             </ul>
         </header>
-        <main>
+        <main id="viewHeight" class="scrollBox flexContainer">
+            <div class="flexElement">
+                <h2 class="centerHeader">Capsules</h2>
+                <div id="capsulesContainer">
+                </div>
+                <div id="event" class="closed">
+                </div>
+            </div>
+            <div class="flexElement">
+                <h2 class="centerHeader">Rocket Cores</h2>
+                <div id="coresContainer">
+                    <div class="detailContainer">
+                        <h3>B1021</h3>
+                        <div class="openInfo">
+                            <span class="vertSpan"></span>
+                            <span class="horiSpan"></span>
+                        </div>
+                        <div class="hidden">
+                            <p>First drone ship landing, first orbital booster to be reflown, first orbital booster to be landed twice, will be given as a gift to Cape Canaveral</p><br>
+                            <p>First launchdate: Apr 08 2016</p>
+                            <p>First launchtime: 20:43</p>
+                            <br>
+                            <p>Flights: <i class="flight028 flightsRight">CRS-8</i> - <i class="flight038 flightsRight">SES-10</i></p>
+                            <br>
+                            <p>Reuse: 1</p>
+                            <p>Landing attempts: 2</p>
+                            <p>Autonomous spaceport drone ship landings: 2</p>
+                            <p>Status: retired</p>
+                        </div>
+                    </div>
+                </div>
+                <div id="eventRight" class="closed">
+                </div>
+            </div>
         </main>
+        <button id="up">&#x2B06;</button>
+        <script src="js/rockets.js"></script>
+        <script src="js/launches.js"></script>
+        <script src="js/scrollDetection.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
+        <script>
+            document.querySelectorAll('.flightsRight').forEach(item => {
+                item.addEventListener('click', rightExpandEvent);
+            });
+            capsulesPopulate();
+        </script>
     </body>
 </html>
