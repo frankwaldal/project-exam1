@@ -6,7 +6,10 @@
         <link href="css/style.css" rel="stylesheet">
     </head>
     <body>
-        <header class="headerBg">
+        <div id="pageBackground">
+            <img src="img/2016_-_09_ses-9_0301_06.jpg" draggable="false">
+        </div>
+        <header>
             <h1><a href="index.htm">A Mars Adventure</a></h1>
             <ul>
                 <li><a href="index.htm">Home</a></li>
@@ -15,7 +18,26 @@
                 <li><a href="rockets.htm">Rockets</a></li>
             </ul>
         </header>
-        <main>
+        <main id="viewHeight" class="flexContainer scrollBox">
+            <div class="flexElement">
+                <h2 class="centerHeader">SpaceX</h2>
+            </div>
+            <div class="flexElement">
+                <h2 class="centerHeader">Historical Events</h2>
+                <div id="historicalContainer">
+                </div>
+                <div id="eventRight" class="closed">
+                </div>
+            </div>
         </main>
+        <button id="up">&#x2B06;</button>
+        <script src="js/historical.js"></script>
+        <script src="js/rockets.js"></script>
+        <script src="js/launches.js"></script>
+        <script src="js/scrollDetection.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
+        <script>
+            historicalPopulate();
+        </script>
     </body>
 </html>

@@ -247,7 +247,11 @@ blockquote a, .hidden a, #event a, #eventRight a, #eventLeft a {
 }
 
 .noGridImg {
-    margin: 20px 0;
+    margin: 60px 0 0;
+}
+
+.imgText {
+    margin: 10px;
 }
 
 #event, #eventRight, #eventLeft {
@@ -328,6 +332,7 @@ iframe {
     border: 10px solid rgba(237, 221, 157, 0.38);
     padding: 5px 20px;
     position: relative;
+    background: rgba(11, 13, 25, 0.25);
 }
 
 .detailContainer:first-child {
@@ -379,6 +384,11 @@ iframe {
     text-decoration: underline;
     font-style: normal;
     cursor: pointer;
+}
+
+.historicalDate {
+    align-self: flex-start;
+    font-style: italic;
 }
 
 .spinner-error {

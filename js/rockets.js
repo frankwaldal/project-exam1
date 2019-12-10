@@ -291,7 +291,6 @@ function coresPopulate() {
         .then(resolve => {
             resolve.json().then(respond => {
                 var content = '';
-                console.log(respond);
                 for (i=0;i<respond.length;i++) {
                     var launchTime = '';
                     if (respond[i].original_launch !== null) {
