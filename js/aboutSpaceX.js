@@ -1,8 +1,28 @@
+function aboutSpaceX() {
+    fetch('https://api.spacexdata.com/v3/info')
+        .then(resolve => {
+            resolve.json().then(respond => {
+                document.querySelector('#summary').innerHTML = `<p>${respond.summary}</p>`;
+                var links = '';
+                for (var a in respond.links) {
+                    if (respond.links.hasOwnProperty(a)) {
+                        var urlName = a.split('_');
+                        for (i=0;i<urlName.length;i++) {
+                            urlName[i] = urlName[i].charAt(0).toUpperCase() + urlName[i].slice(1);
+                        }
+                        var linkName = urlName.join(' ');
+                        links += `<p><a href="${respond.links[a]}" target="_blank">${linkName}</a></p>`;
+                    }
+                }
+                document.querySelector('#links').innerHTML = links;
+            })
+        })
+}
+
 function historicalPopulate() {
     fetch('https://api.spacexdata.com/v3/history')
         .then(resolve => {
             resolve.json().then(respond => {
-                console.log(respond);
                 var content = '';
                 for (i=0;i<respond.length;i++) {
                     var eventDate = new Date(respond[i].event_date_utc);

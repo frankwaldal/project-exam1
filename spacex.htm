@@ -21,6 +21,16 @@
         <main id="viewHeight" class="flexContainer scrollBox">
             <div class="flexElement">
                 <h2 class="centerHeader">SpaceX</h2>
+                <div id="summary" class="detailContainer">
+                </div>
+                <img src="https://www.spacex.com/sites/spacex/files/styles/new_gallery_large/public/2016_-_12_mars_city_one_utopia-final-smf.jpg?itok=Lh9wNJ1w" alt="Artist's redering of the approach to Mars" class="spaceXImg noGridImg">
+                <p class="imgText">Artist's redering of the approach to Mars</p>
+                <div id="something" class="detailContainer">
+                </div>
+                <img src="https://www.spacex.com/sites/spacex/files/styles/new_gallery_large/public/2011_-_04_p09_hdr2_flag_resize.jpg?itok=ZsqevpaX" alt="SpaceX headquarters" class="spaceXImg noGridImg">
+                <p class="imgText">SpaceX headquarters</p>
+                <div id="links" class="detailContainer">
+                </div>
             </div>
             <div class="flexElement">
                 <h2 class="centerHeader">Historical Events</h2>
@@ -31,12 +41,14 @@
             </div>
         </main>
         <button id="up">&#x2B06;</button>
-        <script src="js/historical.js"></script>
+        <script src="js/aboutSpaceX.js"></script>
         <script src="js/rockets.js"></script>
         <script src="js/launches.js"></script>
         <script src="js/scrollDetection.js"></script>
         <script src="//cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
         <script>
+            aboutSpaceX();
+
             historicalPopulate();
         </script>
     </body>
