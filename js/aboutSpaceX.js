@@ -1,3 +1,4 @@
+// Function to fetch company information and populate it to spacex.htm
 function aboutSpaceX() {
     fetch('https://api.spacexdata.com/v3/info')
         .then(resolve => {
@@ -17,6 +18,7 @@ function aboutSpaceX() {
                 document.querySelector('#location').innerHTML = `<h3>Location:</h3>
                     <p>${respond.headquarters.address}<br>${respond.headquarters.city}, ${respond.headquarters.state}</p>`;
                 var links = '<h3>Links:</h3>';
+                // Looping through links and gives keys uppercase firstletter and adds space, for better visuability
                 for (var a in respond.links) {
                     if (respond.links.hasOwnProperty(a)) {
                         var urlName = a.split('_');
@@ -30,13 +32,20 @@ function aboutSpaceX() {
                 document.querySelector('#links').innerHTML = links;
             })
         })
+        // Error handling
+        .catch(err => {
+            document.querySelector('#summary').innerHTML = `<p>Sorry, we couldn't retrieve SpaceX company information now.</p>
+                <p>Error: ${err}</p>`
+        })
 }
 
+// Function to fetch historical events for spacex, populates containers in spacex.htm with these events
 function historicalPopulate() {
     fetch('https://api.spacexdata.com/v3/history')
         .then(resolve => {
             resolve.json().then(respond => {
                 var content = '';
+                // Looping through returned array to create container for each event
                 for (i=0;i<respond.length;i++) {
                     var eventDate = new Date(respond[i].event_date_utc);
                     var flight = '';
@@ -71,6 +80,7 @@ function historicalPopulate() {
                         </div>
                     </div>`;
                 }
+                // Adding the event containers to the DOM, and adding eventlisteners
                 document.querySelector('#historicalContainer').innerHTML = content;
                 document.querySelectorAll('.openInfo').forEach(item => {
                     item.addEventListener('click', expandInfo);
@@ -80,8 +90,13 @@ function historicalPopulate() {
                 });
             })
         })
+        // Error handling
         .catch(err => {
             document.querySelector('#historicalContainer').innerHTML = `<p>Sorry, we couldn't retrieve historical events now.</p>
                 <p>Error: ${err}</p>`;
         })
 }
+
+aboutSpaceX();
+
+historicalPopulate();

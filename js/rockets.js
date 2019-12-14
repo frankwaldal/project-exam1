@@ -1,3 +1,4 @@
+// Function to create and add to DOM an overlay with an event on the left column
 function leftExpandEvent() {
     var url = `https://api.spacexdata.com/v3/launches/${this.className.substring(6,9)}`;
     fetch(url)
@@ -113,6 +114,7 @@ function leftExpandEvent() {
         })
 }
 
+// Function to create and add to DOM an overlay with an event on the right column
 function rightExpandEvent() {
     var url = `https://api.spacexdata.com/v3/launches/${this.className.substring(6,9)}`;
     fetch(url)
@@ -227,7 +229,9 @@ function rightExpandEvent() {
         })
 }
 
+// Function to fetch SpaceX capsules, populates containers in rokets.htm with these capsules
 function capsulesPopulate() {
+    // Removes eventlisteners to avoid adding doubles
     document.querySelectorAll('.openInfo').forEach(item => {
         item.removeEventListener('click', expandInfo);
     });
@@ -235,6 +239,7 @@ function capsulesPopulate() {
         .then(resolve => {
             resolve.json().then(respond => {
                 var content = '';
+                // Looping through returned array to create container for each capsule
                 for (i=0;i<respond.length;i++) {
                     var launchTime = '';
                     if (respond[i].original_launch !== null) {
@@ -268,6 +273,7 @@ function capsulesPopulate() {
                         </div>
                     </div>`;
                 }
+                // Adding the capsule containers to the DOM, and adding eventlisteners
                 document.querySelector('#capsulesContainer').innerHTML = content;
                 document.querySelectorAll('.flights').forEach(item => {
                     item.addEventListener('click', leftExpandEvent);
@@ -277,13 +283,16 @@ function capsulesPopulate() {
                 });
             })
         })
+        // Error handling
         .catch(err => {
             document.querySelector('#capsulesContainer').innerHTML = `<p>Sorry, we couldn't retrieve capsules now.</p>
                 <p>Error: ${err}</p>`;
         })
 }
 
+// Function to fetch SpaceX cores, populates containers in rokets.htm with these cores
 function coresPopulate() {
+    // Removes eventlisteners to avoid adding doubles
     document.querySelectorAll('.openInfo').forEach(item => {
         item.removeEventListener('click', expandInfo);
     });
@@ -291,6 +300,7 @@ function coresPopulate() {
         .then(resolve => {
             resolve.json().then(respond => {
                 var content = '';
+                // Looping through returned array to create container for each core
                 for (i=0;i<respond.length;i++) {
                     var launchTime = '';
                     if (respond[i].original_launch !== null) {
@@ -344,6 +354,7 @@ function coresPopulate() {
                         </div>
                     </div>`;
                 }
+                // Adding the core containers to the DOM, and adding eventlisteners
                 document.querySelector('#coresContainer').innerHTML = content;
                 document.querySelectorAll('.flightsRight').forEach(item => {
                     item.addEventListener('click', rightExpandEvent);
@@ -353,6 +364,7 @@ function coresPopulate() {
                 });
             })
         })
+        // Error handling
         .catch(err => {
             document.querySelector('#coresContainer').innerHTML = `<p>Sorry, we couldn't retrieve capsules now.</p>
                 <p>Error: ${err}</p>`;

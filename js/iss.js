@@ -1,5 +1,7 @@
+// Initiating map, centered at coords 0,0 with zoomlevel 4
 var map = L.map('map').setView([0,0], 4);
 
+// Adds map-graphics using mapbox
 L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
     attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
     maxZoom: 18,
@@ -7,6 +9,7 @@ L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
     accessToken: 'pk.eyJ1IjoiZnJhbmt3YWxkYWwiLCJhIjoiY2szb3NuaHRwMDBhZTNjb2FhbnB3cnJpZiJ9.rt9uvKHuyBFSFUoDqmGbXA'
 }).addTo(map);
 
+// Adds icon-marker to map
 var mapIcon = L.icon({
     iconUrl: 'img/issIcon.svg',
     iconSize: [80, 34],
@@ -18,6 +21,7 @@ var mapIcon = L.icon({
 
 var marker = L.marker([0, 0], {icon: mapIcon}).addTo(map);
 
+// Function to add marker of ISS' location and center the map at current location
 function issPosition() {
     fetch('https://frankwaldal-eval-test.apigee.net/open-notify/iss-now.json')
         .then(resolve => {
@@ -30,6 +34,7 @@ function issPosition() {
         .catch(err => {console.log(err)})
 }
 
+// Function to show next times ISS passes at coords retrieved from browsers geolocation-API
 function issPassing() {
     navigator.geolocation.getCurrentPosition(location => {
         var url = `https://cors-anywhere.herokuapp.com/http://api.open-notify.org/iss-pass.json?lat=${location.coords.latitude}&lon=${location.coords.longitude}`;
@@ -52,6 +57,7 @@ function issPassing() {
     });
 }
 
+// Function to check which persons are in space and specifically at the ISS
 function issCrew() {
     fetch('https://frankwaldal-eval-test.apigee.net/open-notify/astros.json')
         .then(resolve => {
@@ -77,7 +83,7 @@ issCrew();
 document.querySelector('#refresh').addEventListener('click', issPosition);
 
 
-// Fetch urls
+// Fetch urls !!!Remove after decided which to use!!!
 
 // https://cors-anywhere.herokuapp.com/http://api.open-notify.org/
 // https://frankwaldal-eval-test.apigee.net/open-notify/

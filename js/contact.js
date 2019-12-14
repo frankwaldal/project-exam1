@@ -1,3 +1,4 @@
+// Function to check fields in form and send the message with a POST to php-file
 function formSubmit(e) {
     e.preventDefault();
     var nameMsgCheck = /[A-Za-z\- .]+/;
@@ -59,6 +60,7 @@ function formSubmit(e) {
     }
 }
 
+// Function to check target input field against regex
 function liveCheck(e) {
     var nameMsgCheck = /[A-Za-z\- .]+/;
     var emailCheck = /^[a-z0-9\.\-_+!#$%&'*/=?\^`{}~|]+@([a-z0-9\-]+\.)+[a-z]{2,4}$/i;
@@ -90,6 +92,7 @@ function liveCheck(e) {
     }
 }
 
+// Reseting added styles and messages added during form check when hitting reset button
 function formReset() {
     document.querySelector('#formError').innerHTML = '';
     document.querySelector('#nameError').style.display = 'none';

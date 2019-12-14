@@ -1,3 +1,4 @@
+// Function to create and add to DOM an overlay with an event from the calendar
 function expandEvent() {
     var url = `https://api.spacexdata.com/v3/launches/${this.className.substring(67,70)}`;
     fetch(url)
@@ -73,6 +74,7 @@ function expandEvent() {
                 });
             })
         })
+        // Error handling
         .catch(err => {
             document.querySelector('#event').innerHTML = `<button id="close">X</button>
                 <p>Couldn't retrieve information about launch.</p>
@@ -88,6 +90,7 @@ function expandEvent() {
         })
 }
 
+// Function to initiate the calendar, fetching and populating it with future launches from SpaceX
 function calendarInit() {
     var calendarContainer = document.querySelector('#calendar');
 
@@ -108,6 +111,7 @@ function calendarInit() {
                         }
                     }
                     var flightNumber = respond[i].flight_number;
+                    // Creating each calendar event object
                     var eventObject = {
                         classNames: `flight_number${numeral(flightNumber).format('000')}`,
                         title: `${respond[i].mission_name}`,
@@ -118,11 +122,13 @@ function calendarInit() {
                     }
                     eventArray.push(eventObject);
                 }
+                // Initiating the calendar with FullCalendar.js
                 var calendar = new FullCalendar.Calendar(calendarContainer, {
                     plugins: ['dayGrid'],
                     events: eventArray,
                 });
 
+                // Rendering the calendar to the DOM with FullCalendar.js
                 calendar.render();
 
                 document.querySelectorAll('.fc-event').forEach(item => {
@@ -140,17 +146,20 @@ function calendarInit() {
                 })
             })
         })
+        // Error handling
         .catch(err => {
             calendarContainer.innerHTML = `<p>Sorry, we couldn't retrieve future launches now.</p>
                 <p>Error: ${err}</p>`;
         })
 }
 
+// Function to fetch past launches for SpaceX, populates containers in launches.htm with these launches
 function pastLaunchPopulate() {
     fetch('https://api.spacexdata.com/v3/launches/past?sort=launch_date_utc&order=desc')
         .then(resolve => {
             resolve.json().then(respond => {
                 var content = '';
+                // Looping through returned array to create container for each launch
                 for (i=0;i<respond.length;i++) {
                     var launchTime = '';
                     if (respond[i].last_ll_launch_date === null || respond[i].last_ll_launch_date === undefined) {
@@ -182,12 +191,14 @@ function pastLaunchPopulate() {
                     }
                     var orbit = '';
                     if (respond[i].rocket.second_stage.payloads[0].orbit_params.regime === null || respond[i].rocket.second_stage.payloads[0].orbit_params.regime === undefined) {
+                        // Checks if ISS was launch target, and adds link to iss.htm if so
                         if (respond[i].rocket.second_stage.payloads[0].orbit === 'ISS') {
                             orbit = `<a href="iss.htm">${respond[i].rocket.second_stage.payloads[0].orbit}</a>`;
                         } else {
                             orbit = `${respond[i].rocket.second_stage.payloads[0].orbit}`;
                         }
                     } else {
+                        // Checks if ISS was launch target, and adds link to iss.htm if so
                         if (respond[i].rocket.second_stage.payloads[0].orbit === 'ISS') {
                             orbit = `<a href="iss.htm">${respond[i].rocket.second_stage.payloads[0].orbit}</a> - ${respond[i].rocket.second_stage.payloads[0].orbit_params.regime}`;
                         } else {
@@ -243,18 +254,21 @@ function pastLaunchPopulate() {
                         </div>
                     </div>`;
                 }
+                // Adding the launch containers to the DOM, and adding eventlisteners
                 document.querySelector('#pastLaunchContainer').innerHTML = content;
                 document.querySelectorAll('.openInfo').forEach(item => {
                     item.addEventListener('click', expandInfo);
                 });
             })
         })
+        // Error handling
         .catch(err => {
             document.querySelector('#pastLaunchContainer').innerHTML = `<p>Sorry, we couldn't retrieve past launches now.</p>
                 <p>Error: ${err}</p>`;
         })
 }
 
+// Function to expand info-boxes, used at all boxes styled in this fashion
 function expandInfo() {
     if (this.nextSibling.nextSibling.style.display === 'flex') {
         this.nextSibling.nextSibling.style.display = 'none';
