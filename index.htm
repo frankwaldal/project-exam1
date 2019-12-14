@@ -19,23 +19,38 @@
             </ul>
         </header>
         <main id="viewHeight" class="scrollBox gridContainer">
+            <div class="text1">
+                <p class="indexText">Welcome to A Mars Adventure, a site to awaken your inner space explorer.</p>
+                <p class="indexText">We you information about SpaceX, a company set to revolutionize space travel and exploration of the universe.</p>
+                <p class="indexText">You can find information and vidoes of past and future launches, rockets and events.</p>
+            </div>
+            <div class="text2">
+                <p class="indexText">Wonder where ISS is right now?<br><a href="iss.htm">We have the answer.</a></p>
+                <p class="indexText">You will also find the best times to look for ISS on the sky above you.</p>
+                <p>If you have any questions, send us a message with the contact form below.</p>
+            </div>
             <img src="https://www.spacex.com/sites/spacex/files/styles/new_gallery_large/public/first_reflight_-_11_ses10_l-0_-_landing_cam02_-_040117_-_img_968528.jpg?itok=rtEY-It9" alt="Rocket prepares to land for the second time" class="spaceXImg pic2">
             <img src="https://www.spacex.com/sites/spacex/files/styles/new_gallery_large/public/39a_05_crs10_-_lminus2_-_021617_-_bi0i8684.jpg?itok=FMv7CDPj" alt="Launch complex 39A at sunset" class="spaceXImg pic1">
             <form class="form">
+                <p id="formError"></p>
                 <label>Name:
                     <input type="text" id="formName" placeholder="Your name">
                 </label>
+                <p id="nameError">You need to provide a name.</p>
                 <label>Email:
                     <input type="email" id="formEmail" placeholder="someone@example.com">
                 </label>
+                <p id="emailError">You need to provide a valid email.</p>
                 <label>Message:
                     <textarea id="formMessage" placeholder="Your message"></textarea>
                 </label>
+                <p id="msgError">You need to write a message.</p>
                 <div class="buttons">
-                    <input type="reset" id="reset">
-                    <input type="submit" id="submit">
+                    <input type="reset" id="reset" value="Reset">
+                    <input type="submit" id="submit" value="Send">
                 </div>
             </form>
         </main>
+        <script src="js/contact.js"></script>
     </body>
 </html>

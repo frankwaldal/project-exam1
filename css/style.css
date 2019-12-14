@@ -114,10 +114,14 @@ main {
 
 .text2 {
     grid-area: text2;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
 }
 
 .pic2 {
     grid-area: pic2;
+    margin-bottom: 30px;
 }
 
 .form {
@@ -126,6 +130,15 @@ main {
     flex-direction: column;
     align-items: center;
     margin: 10px auto;
+}
+
+.indexText {
+    font-size: 1.4em;
+    margin: 30px 0;
+}
+
+.text2 p {
+    text-align: right;
 }
 
 .spaceXImg {
@@ -179,21 +192,58 @@ main {
 
 label {
     display: flex;
+    justify-content: space-between;
     align-items: center;
+    width: 100%;
     margin: 10px;
+    font-size: 1.4em;
+}
+
+#nameError, #emailError, #msgError {
+    margin: 0 10px;
+    color: #c9504d;
+    display: none;
 }
 
 label input, label textarea {
     margin: 0 10px;
+    border-radius: 8px;
+    font-size: 16px;
+    border: 2px solid #eee;
 }
 
 label input {
-    height: 2em;
+    width: 200px;
+    height: 3em;
 }
 
 textarea {
+    width: 200px;
     resize: none;
-    height: 8em;
+    height: 10em;
+}
+
+.buttons {
+    margin: 30px;
+}
+
+#reset, #submit {
+    margin: 0 30px;
+    padding: 0 10px;
+    height: 2.5em;
+    border-radius: 8px;
+    background: #403e3e;
+    font-size: 1.17em;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#reset {
+    color: #c9504d;
+}
+
+#submit {
+    color: #83d086;
 }
 
 .singleContainer {
@@ -212,8 +262,9 @@ textarea {
 }
 
 #refresh {
+    padding: 0 10px;
     height: 2.5em;
-    border-radius: 5px;
+    border-radius: 8px;
     background: #403e3e;
     font-size: 1.17em;
     font-weight: bold;
@@ -233,7 +284,7 @@ blockquote {
     margin: 10px 40px;
 }
 
-blockquote a, #event a, #eventRight a, #eventLeft a, .detailContainer a {
+blockquote a, #event a, #eventRight a, #eventLeft a, .detailContainer a, .indexText a {
     color: inherit;
     font-style: italic;
 }
@@ -252,6 +303,10 @@ blockquote a, #event a, #eventRight a, #eventLeft a, .detailContainer a {
 
 .imgText {
     margin: 10px;
+}
+
+.imgText:last-child {
+    margin-bottom: 30px;
 }
 
 #event, #eventRight, #eventLeft {
@@ -339,6 +394,10 @@ iframe {
     margin-top: 80px;
 }
 
+.detailContainer:last-child {
+    margin-bottom: 30px;
+}
+
 .detailContainer h3 {
     height: 30px;
     margin: 10px 0;
@@ -393,6 +452,14 @@ iframe {
 
 #summary {
     margin-top: 80px;
+}
+
+.aboutImgText {
+    margin-bottom: 50px;
+}
+
+#links, #roles {
+    margin-top: 30px;
 }
 
 .spinner-error {

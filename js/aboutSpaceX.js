@@ -3,7 +3,20 @@ function aboutSpaceX() {
         .then(resolve => {
             resolve.json().then(respond => {
                 document.querySelector('#summary').innerHTML = `<p>${respond.summary}</p>`;
-                var links = '';
+                document.querySelector('#roles').innerHTML = `<h3>Key roles:</h3>
+                    <p>Founder: <b>${respond.founder}</b> - <a href="https://en.wikipedia.org/wiki/${respond.founder.replace(/ /g, '_')}" target="_blank">Wikipedia</a></p>
+                    <p>CEO: <b>${respond.ceo}</b> - <a href="https://en.wikipedia.org/wiki/${respond.ceo.replace(/ /g, '_')}" target="_blank">Wikipedia</a></p>
+                    <p>CTO: <b>${respond.cto}</b> - <a href="https://en.wikipedia.org/wiki/${respond.cto.replace(/ /g, '_')}" target="_blank">Wikipedia</a></p>
+                    <p>COO: <b>${respond.coo}</b> - <a href="https://en.wikipedia.org/wiki/${respond.coo.replace(/ /g, '_')}" target="_blank">Wikipedia</a></p>
+                    <p>CTO Propulsion: <b>${respond.cto_propulsion}</b> - <a href="https://en.wikipedia.org/wiki/${respond.cto_propulsion.replace(/ /g, '_')}" target="_blank">Wikipedia</a></p>`;
+                document.querySelector('#figures').innerHTML = `<h3>Key figures:</h3>
+                    <p>Employees: ${respond.employees}</p>
+                    <p>Company value: ${numeral(respond.valuation).format('($ 0.00a)')}</p>
+                    <p>Launch sites: ${respond.launch_sites}</p>
+                    <p>Test sites: ${respond.test_sites}</p>`;
+                document.querySelector('#location').innerHTML = `<h3>Location:</h3>
+                    <p>${respond.headquarters.address}<br>${respond.headquarters.city}, ${respond.headquarters.state}</p>`;
+                var links = '<h3>Links:</h3>';
                 for (var a in respond.links) {
                     if (respond.links.hasOwnProperty(a)) {
                         var urlName = a.split('_');
