@@ -71,7 +71,7 @@ function leftExpandEvent() {
                 if (respond.links.youtube_id !== null || respond.links.youtube_id !== undefined) {
                     youtube = `<iframe width="100%" src="https://www.youtube.com/embed/${respond.links.youtube_id}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
                 }
-                var content = `<button id="close">X</button>
+                var content = `<img src="img/close.svg" id="close">
                     <h3>${respond.mission_name}</h3>
                     ${details}
                     ${launchTime}
@@ -186,7 +186,7 @@ function rightExpandEvent() {
                 if (respond.links.youtube_id !== null || respond.links.youtube_id !== undefined) {
                     youtube = `<iframe width="100%" src="https://www.youtube.com/embed/${respond.links.youtube_id}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
                 }
-                var content = `<button id="closeRight">X</button>
+                var content = `<img src="img/close.svg" id="closeRight">
                     <h3>${respond.mission_name}</h3>
                     ${details}
                     ${launchTime}

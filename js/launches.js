@@ -50,7 +50,7 @@ function expandEvent() {
                         orbit = `${respond.rocket.second_stage.payloads[0].orbit} - ${respond.rocket.second_stage.payloads[0].orbit_params.regime}`;
                     }
                 }
-                var content = `<button id="close">X</button>
+                var content = `<img src="img/close.svg" id="close">
                     <h3>${respond.mission_name}</h3>
                     ${details}
                     ${launchTime}

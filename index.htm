@@ -2,22 +2,22 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <meta name="description" content="">
-        <meta name="keywords" content="">
+        <meta name="description" content="A microsite to spark interest about SpaceX">
+        <meta name="keywords" content="Space travel, Mars, ISS, SpaceX, space, rockets, capsules, cores">
         <meta name="author" content="Frank Waldal">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>A Mars Adventure</title>
         <link rel="stylesheet" href="css/commonStyles.css">
         <link href="css/mobileStyles.css" media="screen and (max-width: 699px)" rel="stylesheet">
-        <link href="css/tabletStyles.css" media="screen and (min-width: 700px) and (max-width: 1199px)" rel="stylesheet">
-        <link href="css/lowResStyles.css" media="screen and (min-width: 1200px) and (max-width: 1799px)" rel="stylesheet">
+        <link href="css/tabletStyles.css" media="screen and (min-width: 700px) and (max-width: 1299px)" rel="stylesheet">
+        <link href="css/lowResStyles.css" media="screen and (min-width: 1300px) and (max-width: 1799px)" rel="stylesheet">
         <link rel='stylesheet' media='screen and (min-width: 1800px)' href='css/highResStyles.css'>
     </head>
     <body>
         <div id="pageBackground">
             <img src="img/2016_-_01-26751237322_ceb6d56235_o_1.jpg" draggable="false">
         </div>
-        <header>
+        <header id="indexHeader">
             <h1>A Mars Adventure</h1>
             <ul>
                 <li class="current">Home</li>
@@ -31,7 +31,7 @@
                 <span></span>
             </div>
         </header>
-        <main class="scrollBox gridContainer">
+        <main id="indexMain" class="scrollBox gridContainer">
             <div class="text1">
                 <p class="indexText">Welcome to A Mars Adventure, a site to awaken your inner space explorer.</p>
                 <p class="indexText">We you information about SpaceX, a company set to revolutionize space travel and exploration of the universe.</p>
@@ -64,7 +64,7 @@
                 </div>
             </form>
         </main>
-        <button id="up">&#x2B06;</button>
+        <img src="img/upArrow.svg" id="up">
         <script src="js/contact.js"></script>
         <script src="js/scrollMobileMenu.js"></script>
     </body>
