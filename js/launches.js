@@ -161,103 +161,20 @@ function pastLaunchPopulate() {
                 var content = '';
                 // Looping through returned array to create container for each launch
                 for (i=0;i<respond.length;i++) {
-                    var launchTime = '';
-                    if (respond[i].last_ll_launch_date === null || respond[i].last_ll_launch_date === undefined) {
-                        var launch = new Date(respond[i].launch_date_utc);
-                        launchTime = `<p>Launchdate: ${launch.toString().substring(4,15)}</p>
-                            <p>Launchtime: ${launch.toLocaleTimeString()}</p>`;
-                    } else {
-                        if (respond[i].launch_date_utc<respond[i].last_ll_launch_date) {
-                            var launch = new Date(respond[i].last_ll_launch_date);
-                            launchTime = `<p>Launchdate: ${launch.toString().substring(4,15)}</p>
-                                <p>Launchtime: ${launch.toLocaleTimeString()}</p>`;
-                        } else {
-                            var launch = new Date(respond[i].launch_date_utc);
-                            launchTime = `<p>Launchdate: ${launch.toString().substring(4,15)}</p>
-                                <p>Launchtime: ${launch.toLocaleTimeString()}</p>`;
-                        }
-                    }
-                    var cores = '';
-                    for (j=0;j<respond[i].rocket.first_stage.cores.length;j++) {
-                        cores += ` - ${respond[i].rocket.first_stage.cores[j].core_serial}`;
-                    }
-                    var customers = '';
-                    for (j=0;j<respond[i].rocket.second_stage.payloads[0].customers.length;j++) {
-                        customers += ` - ${respond[i].rocket.second_stage.payloads[0].customers[j]}`;
-                    }
-                    var details = '';
-                    if (respond[i].details !== null) {
-                        details = `<p>${respond[i].details}</p><br>`;
-                    }
-                    var orbit = '';
-                    if (respond[i].rocket.second_stage.payloads[0].orbit_params.regime === null || respond[i].rocket.second_stage.payloads[0].orbit_params.regime === undefined) {
-                        // Checks if ISS was launch target, and adds link to iss.htm if so
-                        if (respond[i].rocket.second_stage.payloads[0].orbit === 'ISS') {
-                            orbit = `<a href="iss.htm">${respond[i].rocket.second_stage.payloads[0].orbit}</a>`;
-                        } else {
-                            orbit = `${respond[i].rocket.second_stage.payloads[0].orbit}`;
-                        }
-                    } else {
-                        // Checks if ISS was launch target, and adds link to iss.htm if so
-                        if (respond[i].rocket.second_stage.payloads[0].orbit === 'ISS') {
-                            orbit = `<a href="iss.htm">${respond[i].rocket.second_stage.payloads[0].orbit}</a> - ${respond[i].rocket.second_stage.payloads[0].orbit_params.regime}`;
-                        } else {
-                            orbit = `${respond[i].rocket.second_stage.payloads[0].orbit} - ${respond[i].rocket.second_stage.payloads[0].orbit_params.regime}`;
-                        }
-                    }
-                    var success = '';
-                    if (respond[i].launch_success) {
-                        success = '<p>Launch success: Yes</p>';
-                    } else {
-                        success = `<p>Launch success: No</p>
-                            <p>Failure reason: ${respond[i].launch_failure_details.reason}</p>`;
-                    }
-                    var links = '';
-                    if (respond[i].links.article_link !== null || respond[i].links.article_link !== undefined) {
-                        links += `<p><a href="${respond[i].links.article_link}" target="_blank">Article</a></p>`
-                    }
-                    if (respond[i].links.wikipedia !== null || respond[i].links.wikipedia !== undefined) {
-                        links += `<p><a href="${respond[i].links.wikipedia}" target="_blank">Wikipedia</a></p>`
-                    }
-                    if (respond[i].links.reddit_campaign !== null || respond[i].links.reddit_campaign !== undefined) {
-                        links += `<p><a href="${respond[i].links.reddit_campaign}" target="_blank">Reddit Campaign thread</a></p>`
-                    }
-                    if (respond[i].links.reddit_launch !== null || respond[i].links.reddit_launch !== undefined) {
-                        links += `<p><a href="${respond[i].links.reddit_launch}" target="_blank">Reddit Launch thread</a></p>`
-                    }
-                    var youtube = '';
-                    if (respond[i].links.youtube_id !== null || respond[i].links.youtube_id !== undefined) {
-                        youtube = `<iframe width="100%" height="500px" src="https://www.youtube.com/embed/${respond[i].links.youtube_id}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
-                    }
                     content += `<div class="detailContainer">
                         <h3>${respond[i].mission_name}</h3>
-                        <div class="openInfo">
+                        <div class="openInfo" id="flight${numeral(respond[i].flight_number).format('000')}">
                             <span class="vertSpan"></span>
                             <span class="horiSpan"></span>
                         </div>
-                        <div class="hidden">
-                            ${details}
-                            ${launchTime}
-                            <p>Launchsite: ${respond[i].launch_site.site_name_long}</p>
-                            <br>
-                            <p>Rocket: ${respond[i].rocket.rocket_name}</p>
-                            <p>Core: ${cores.substring(3)}</p>
-                            <p>Payload: ${respond[i].rocket.second_stage.payloads[0].payload_type}</p>
-                            <p>Payload manufacturer: ${respond[i].rocket.second_stage.payloads[0].manufacturer}</p>
-                            <p>Payload customer: ${customers.substring(3)}</p>
-                            <p>Orbit: ${orbit}</p>
-                            <br>
-                            ${success}
-                            <br>
-                            ${links}
-                            ${youtube}
+                        <div class="hidden" id="hidden${numeral(respond[i].flight_number).format('000')}">
                         </div>
                     </div>`;
                 }
                 // Adding the launch containers to the DOM, and adding eventlisteners
                 document.querySelector('#pastLaunchContainer').innerHTML = content;
                 document.querySelectorAll('.openInfo').forEach(item => {
-                    item.addEventListener('click', expandInfo);
+                    item.addEventListener('click', expandPastLaunch);
                 });
             })
         })
@@ -276,5 +193,113 @@ function expandInfo() {
     } else {
         this.nextSibling.nextSibling.style.display = 'flex';
         this.childNodes[1].style.transform = 'rotateX(90deg)';
+    }
+}
+
+// Function to populate launch information when expanding container
+function expandPastLaunch() {
+    var launchId = this.id.substring(6);
+    if (this.nextSibling.nextSibling.style.display === 'flex') {
+        this.nextSibling.nextSibling.style.display = 'none';
+        this.childNodes[1].style.transform = 'rotateX(0deg)';
+        document.querySelector(`#hidden${launchId}`).innerHTML = '';
+    } else {
+        this.nextSibling.nextSibling.style.display = 'flex';
+        this.childNodes[1].style.transform = 'rotateX(90deg)';
+        var url = `https://api.spacexdata.com/v3/launches/${launchId}`;
+        fetch(url)
+            .then(resolve => {
+                resolve.json().then(respond => {
+                    var launchTime = '';
+                    if (respond.last_ll_launch_date === null || respond.last_ll_launch_date === undefined) {
+                        var launch = new Date(respond.launch_date_utc);
+                        launchTime = `<p>Launchdate: ${launch.toString().substring(4,15)}</p>
+                            <p>Launchtime: ${launch.toLocaleTimeString()}</p>`;
+                    } else {
+                        if (respond.launch_date_utc<respond.last_ll_launch_date) {
+                            var launch = new Date(respond.last_ll_launch_date);
+                            launchTime = `<p>Launchdate: ${launch.toString().substring(4,15)}</p>
+                                <p>Launchtime: ${launch.toLocaleTimeString()}</p>`;
+                        } else {
+                            var launch = new Date(respond.launch_date_utc);
+                            launchTime = `<p>Launchdate: ${launch.toString().substring(4,15)}</p>
+                                <p>Launchtime: ${launch.toLocaleTimeString()}</p>`;
+                        }
+                    }
+                    var cores = '';
+                    for (j=0;j<respond.rocket.first_stage.cores.length;j++) {
+                        cores += ` - ${respond.rocket.first_stage.cores[j].core_serial}`;
+                    }
+                    var customers = '';
+                    for (j=0;j<respond.rocket.second_stage.payloads[0].customers.length;j++) {
+                        customers += ` - ${respond.rocket.second_stage.payloads[0].customers[j]}`;
+                    }
+                    var details = '';
+                    if (respond.details !== null) {
+                        details = `<p>${respond.details}</p><br>`;
+                    }
+                    var orbit = '';
+                    if (respond.rocket.second_stage.payloads[0].orbit_params.regime === null || respond.rocket.second_stage.payloads[0].orbit_params.regime === undefined) {
+                        // Checks if ISS was launch target, and adds link to iss.htm if so
+                        if (respond.rocket.second_stage.payloads[0].orbit === 'ISS') {
+                            orbit = `<a href="iss.htm">${respond.rocket.second_stage.payloads[0].orbit}</a>`;
+                        } else {
+                            orbit = `${respond.rocket.second_stage.payloads[0].orbit}`;
+                        }
+                    } else {
+                        // Checks if ISS was launch target, and adds link to iss.htm if so
+                        if (respond.rocket.second_stage.payloads[0].orbit === 'ISS') {
+                            orbit = `<a href="iss.htm">${respond.rocket.second_stage.payloads[0].orbit}</a> - ${respond.rocket.second_stage.payloads[0].orbit_params.regime}`;
+                        } else {
+                            orbit = `${respond.rocket.second_stage.payloads[0].orbit} - ${respond.rocket.second_stage.payloads[0].orbit_params.regime}`;
+                        }
+                    }
+                    var success = '';
+                    if (respond.launch_success) {
+                        success = '<p>Launch success: Yes</p>';
+                    } else {
+                        success = `<p>Launch success: No</p>
+                            <p>Failure reason: ${respond.launch_failure_details.reason}</p>`;
+                    }
+                    var links = '';
+                    if (respond.links.article_link !== null || respond.links.article_link !== undefined) {
+                        links += `<p><a href="${respond.links.article_link}" target="_blank">Article</a></p>`
+                    }
+                    if (respond.links.wikipedia !== null || respond.links.wikipedia !== undefined) {
+                        links += `<p><a href="${respond.links.wikipedia}" target="_blank">Wikipedia</a></p>`
+                    }
+                    if (respond.links.reddit_campaign !== null || respond.links.reddit_campaign !== undefined) {
+                        links += `<p><a href="${respond.links.reddit_campaign}" target="_blank">Reddit Campaign thread</a></p>`
+                    }
+                    if (respond.links.reddit_launch !== null || respond.links.reddit_launch !== undefined) {
+                        links += `<p><a href="${respond.links.reddit_launch}" target="_blank">Reddit Launch thread</a></p>`
+                    }
+                    var youtube = '';
+                    if (respond.links.youtube_id !== null || respond.links.youtube_id !== undefined) {
+                        youtube = `<iframe width="100%" height="500px" src="https://www.youtube.com/embed/${respond.links.youtube_id}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+                    }
+
+                    document.querySelector(`#hidden${launchId}`).innerHTML = `${details}
+                        ${launchTime}
+                        <p>Launchsite: ${respond.launch_site.site_name_long}</p>
+                        <br>
+                        <p>Rocket: ${respond.rocket.rocket_name}</p>
+                        <p>Core: ${cores.substring(3)}</p>
+                        <p>Payload: ${respond.rocket.second_stage.payloads[0].payload_type}</p>
+                        <p>Payload manufacturer: ${respond.rocket.second_stage.payloads[0].manufacturer}</p>
+                        <p>Payload customer: ${customers.substring(3)}</p>
+                        <p>Orbit: ${orbit}</p>
+                        <br>
+                        ${success}
+                        <br>
+                        ${links}
+                        ${youtube}`;
+
+                })
+            })
+            .catch(err => {
+                document.querySelector(`#hidden${launchId}`).innerHTML = `<p>Sorry, we couldn't retrieve this launches now.</p>
+                    <p>Error: ${err}</p>`;
+            })
     }
 }
