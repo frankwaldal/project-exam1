@@ -2,8 +2,16 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
+        <meta name="description" content="">
+        <meta name="keywords" content="">
+        <meta name="author" content="Frank Waldal">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>A Mars Adventure - SpaceX Rockets</title>
-        <link href="css/style.css" rel="stylesheet">
+        <link rel="stylesheet" href="css/commonStyles.css">
+        <link href="css/mobileStyles.css" media="screen and (max-width: 699px)" rel="stylesheet">
+        <link href="css/tabletStyles.css" media="screen and (min-width: 700px) and (max-width: 1199px)" rel="stylesheet">
+        <link href="css/lowResStyles.css" media="screen and (min-width: 1200px) and (max-width: 1799px)" rel="stylesheet">
+        <link rel='stylesheet' media='screen and (min-width: 1800px)' href='css/highResStyles.css'>
     </head>
     <body>
         <div id="pageBackground">
@@ -17,8 +25,13 @@
                 <li><a href="launches.htm">Launches</a></li>
                 <li class="current">Rockets</li>
             </ul>
+            <div id="mobileMenuButton">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
         </header>
-        <main id="viewHeight" class="scrollBox flexContainer">
+        <main class="scrollBox flexContainer">
             <div class="flexElement">
                 <h2 class="centerHeader">Capsules</h2>
                 <div id="capsulesContainer">
@@ -45,7 +58,7 @@
         <button id="up">&#x2B06;</button>
         <script src="js/rockets.js"></script>
         <script src="js/launches.js"></script>
-        <script src="js/scrollDetection.js"></script>
+        <script src="js/scrollMobileMenu.js"></script>
         <script src="//cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
         <script>
             capsulesPopulate();

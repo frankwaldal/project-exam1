@@ -1,0 +1,412 @@
+@import url('https://fonts.googleapis.com/css?family=Fira+Sans&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    background: #0b0d19;
+    font-family: 'Fira Sans', sans-serif;
+    color: #eddd9d;
+}
+
+#pageBackground {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    opacity: 0.8;
+    z-index: -1;
+}
+
+#pageBackground img {
+    width: 100vw;
+    height: 100vh;
+}
+
+header {
+    width: 100vw;
+    display: flex;
+    justify-content: space-between;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1111;
+    background: rgba(11, 13, 25, 0.3);
+}
+
+header h1 {
+    font-size: 32px;
+    font-weight: bold;
+    margin: 20px;
+    text-shadow: 2px 2px 6px rgba(237, 221, 157, 0.59);
+}
+
+header h1 a {
+    text-decoration: none;
+    color: inherit;
+}
+
+header ul {
+    list-style: none;
+    display: flex;
+    align-items: center;
+}
+
+header li {
+    font-size: 20px;
+    font-weight: bold;
+    margin: 10px 0;
+    padding: 0 10px;
+}
+
+header li a {
+    text-decoration: none;
+    color: inherit;
+}
+
+header li:nth-child(1), header li:nth-child(2), header li:nth-child(3) {
+    border-right: 3px solid #eddd9d;
+}
+
+.current {
+    text-decoration: underline;
+}
+
+#mobileMenuButton {
+    display: none;
+}
+
+main {
+    margin: 78px 0 0;
+    padding: 0;
+    height: calc(100vh - 78px);
+    background: rgba(11, 13, 25, 0.3);
+}
+
+p {
+    margin: 20px 10px;
+    line-height: 1.5em;
+}
+
+.scrollBox {
+    overflow-y: auto;
+}
+
+.scrollBox::-webkit-scrollbar {
+    width: 10px;
+}
+
+.scrollBox::-webkit-scrollbar-track {
+    background: rgba(237, 221, 157, 0.88);
+}
+
+.scrollBox::-webkit-scrollbar-thumb {
+    background: #807961;
+}
+
+.scrollBox::-webkit-scrollbar-thumb:hover {
+    background: #5e5a4c;
+}
+
+.gridContainer {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-template-rows: 20px auto auto auto auto;
+    grid-row-gap: 20px;
+    grid-column-gap: 10px;
+    grid-template-areas: ". ." "text1 text2" "pic1 pic1" "pic2 pic2" "form form";
+}
+
+.centerHeader {
+    text-align: center;
+}
+
+.pic1 {
+    grid-area: pic1;
+}
+
+.text1 {
+    grid-area: text1;
+}
+
+.text2 {
+    grid-area: text2;
+}
+
+.pic2 {
+    grid-area: pic2;
+}
+
+.form {
+    grid-area: form;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px auto;
+}
+
+.indexText {
+    font-size: 1.4em;
+}
+
+.spaceXImg {
+    width: 100%;
+    outline: 10px solid rgba(237, 221, 157, 0.38);
+    outline-offset: -10px;
+}
+
+#up {
+    position: fixed;
+    bottom: 30px;
+    left: 20px;
+    font-size: 26px;
+    border-radius: 50%;
+    background: #403e3e;
+    color: inherit;
+    cursor: pointer;
+    padding: 3px;
+    width: 1.7em;
+    height: 1.7em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    display: none;
+}
+
+label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin: 10px;
+    font-size: 1.4em;
+}
+
+#nameError, #emailError, #msgError {
+    margin: 0 10px;
+    color: #c9504d;
+    display: none;
+}
+
+label input, label textarea {
+    margin: 0 10px;
+    border-radius: 8px;
+    font-size: 16px;
+    border: 2px solid #eee;
+}
+
+label input {
+    width: 200px;
+    height: 3em;
+}
+
+textarea {
+    width: 200px;
+    resize: none;
+    height: 10em;
+}
+
+.buttons {
+    margin: 30px;
+}
+
+#reset, #submit {
+    margin: 0 30px;
+    padding: 0 10px;
+    height: 2.5em;
+    border-radius: 8px;
+    background: #403e3e;
+    font-size: 1.17em;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#reset {
+    color: #c9504d;
+}
+
+#submit {
+    color: #83d086;
+}
+
+.singleContainer {
+    padding-bottom: 70px;
+    display: flex;
+    flex-direction: column;
+}
+
+#map {
+    width: 100%;
+    height: 500px;
+}
+
+.buttonContainer {
+    margin: 20px 10px;
+}
+
+#refresh {
+    padding: 0 10px;
+    height: 2.5em;
+    border-radius: 8px;
+    background: #403e3e;
+    font-size: 1.17em;
+    font-weight: bold;
+    color: inherit;
+    cursor: pointer;
+}
+
+.singleContainer h3 {
+    margin: 30px 10px 10px;
+}
+
+blockquote {
+    margin: 10px 40px;
+}
+
+blockquote a, #event a, #eventRight a, #eventLeft a, .detailContainer a, .indexText a, #mobileJump a {
+    color: inherit;
+    font-style: italic;
+}
+
+.fc-event {
+    cursor: pointer;
+}
+
+.fc-day.fc-today {
+    background: rgba(252, 248, 227, 0.2)!important;
+}
+
+.noGridImg {
+    margin: 40px 0 0;
+}
+
+.imgText {
+    margin: 10px;
+}
+
+.imgText:last-child {
+    margin-bottom: 30px;
+}
+
+#mobileJump {
+    margin: 20px 10px;
+}
+
+#event, #eventRight, #eventLeft {
+    padding: 10px;
+    z-index: 1111;
+    background: #0b0d19;
+    border: 10px solid rgba(237, 221, 157, 0.38);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform .2s ease-in;
+    position: fixed;
+    top: 78px;
+    width: calc(100% - 40px);
+    height: calc(100vh - 118px);
+    transform-origin: left;
+}
+
+.closed {
+    transform: scaleX(0);
+}
+
+.open {
+    transform: scaleX(1);
+}
+
+#close, #closeRight {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    border-radius: 50%;
+    padding: 6px;
+    width: 2em;
+    height: 2em;
+    background: #403e3e;
+    color: inherit;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+iframe {
+    min-height: 500px;
+}
+
+.detailContainer {
+    border: 10px solid rgba(237, 221, 157, 0.38);
+    padding: 5px 20px;
+    position: relative;
+    background: rgba(11, 13, 25, 0.5);
+}
+
+.detailContainer:last-child {
+    margin-bottom: 70px;
+}
+
+#capsulesContainer .detailContainer:last-child {
+    margin-bottom: 20px;
+}
+
+.detailContainer h3 {
+    height: 30px;
+    margin: 10px 0;
+    display: flex;
+    align-items: center;
+}
+
+.openInfo {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 44px;
+    height: 44px;
+    cursor: pointer;
+}
+
+.openInfo span {
+    background: #eddd9d;
+    position: absolute;
+}
+
+.horiSpan {
+    height: 6px;
+    width: 44px;
+    top: 19px;
+}
+
+.vertSpan {
+    height: 44px;
+    width: 6px;
+    left: 19px;
+    transition: 0.2s ease-in;
+    transform: rotateX(0deg);
+}
+
+.hidden {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+}
+
+.flights, .flightsRight {
+    text-decoration: underline;
+    font-style: normal;
+    cursor: pointer;
+}
+
+.historicalDate {
+    align-self: flex-start;
+    font-style: italic;
+}
+
+.aboutImgText {
+    margin-bottom: 30px;
+}
+
+#links, #roles {
+    margin-top: 20px;
+}

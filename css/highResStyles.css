@@ -33,10 +33,6 @@ header {
     z-index: 1111;
 }
 
-.headerBg {
-    background: #0b0d19;
-}
-
 header h1 {
     font-size: 60px;
     font-weight: bold;
@@ -75,9 +71,34 @@ header li:nth-child(1), header li:nth-child(2), header li:nth-child(3) {
     text-decoration: underline;
 }
 
+#mobileMenuButton {
+    display: none;
+}
+
 main {
     margin: 132px 0 0;
     padding: 0 30px;
+    height: calc(100vh - 132px);
+}
+
+.scrollBox {
+    overflow-y: auto;
+}
+
+.scrollBox::-webkit-scrollbar {
+    width: 10px;
+}
+
+.scrollBox::-webkit-scrollbar-track {
+    background: rgba(237, 221, 157, 0.88);
+}
+
+.scrollBox::-webkit-scrollbar-thumb {
+    background: #807961;
+}
+
+.scrollBox::-webkit-scrollbar-thumb:hover {
+    background: #5e5a4c;
 }
 
 .gridContainer {
@@ -148,33 +169,9 @@ main {
     outline-offset: -10px;
 }
 
-.scrollBox {
-    overflow-y: auto;
-}
-
-.scrollBox::-webkit-scrollbar {
-    width: 10px;
-}
-
-.scrollBox::-webkit-scrollbar-track {
-    background: rgba(237, 221, 157, 0.88);
-}
-
-.scrollBox::-webkit-scrollbar-thumb {
-    background: #807961;
-}
-
-.scrollBox::-webkit-scrollbar-thumb:hover {
-    background: #5e5a4c;
-}
-
-#viewHeight {
-    height: calc(100vh - 132px);
-}
-
 #up {
     position: fixed;
-    bottom: 20px;
+    bottom: 30px;
     left: 20px;
     font-size: 26px;
     border-radius: 50%;
@@ -307,6 +304,10 @@ blockquote a, #event a, #eventRight a, #eventLeft a, .detailContainer a, .indexT
 
 .imgText:last-child {
     margin-bottom: 30px;
+}
+
+#mobileJump {
+    display: none;
 }
 
 #event, #eventRight, #eventLeft {

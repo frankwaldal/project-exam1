@@ -2,8 +2,16 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
+        <meta name="description" content="">
+        <meta name="keywords" content="">
+        <meta name="author" content="Frank Waldal">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>A Mars Adventure</title>
-        <link href="css/style.css" rel="stylesheet">
+        <link rel="stylesheet" href="css/commonStyles.css">
+        <link href="css/mobileStyles.css" media="screen and (max-width: 699px)" rel="stylesheet">
+        <link href="css/tabletStyles.css" media="screen and (min-width: 700px) and (max-width: 1199px)" rel="stylesheet">
+        <link href="css/lowResStyles.css" media="screen and (min-width: 1200px) and (max-width: 1799px)" rel="stylesheet">
+        <link rel='stylesheet' media='screen and (min-width: 1800px)' href='css/highResStyles.css'>
     </head>
     <body>
         <div id="pageBackground">
@@ -17,8 +25,13 @@
                 <li><a href="launches.htm">Launches</a></li>
                 <li><a href="rockets.htm">Rockets</a></li>
             </ul>
+            <div id="mobileMenuButton">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
         </header>
-        <main id="viewHeight" class="scrollBox gridContainer">
+        <main class="scrollBox gridContainer">
             <div class="text1">
                 <p class="indexText">Welcome to A Mars Adventure, a site to awaken your inner space explorer.</p>
                 <p class="indexText">We you information about SpaceX, a company set to revolutionize space travel and exploration of the universe.</p>
@@ -51,6 +64,8 @@
                 </div>
             </form>
         </main>
+        <button id="up">&#x2B06;</button>
         <script src="js/contact.js"></script>
+        <script src="js/scrollMobileMenu.js"></script>
     </body>
 </html>

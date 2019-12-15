@@ -64,7 +64,7 @@ function expandEvent() {
                     <p>Payload customer: ${customers.substring(3)}</p>
                     <p>Orbit: ${orbit}</p>`;
                 document.querySelector('#event').innerHTML = content;
-                document.querySelector('#event').className = 'open';
+                document.querySelector('#event').className = 'open scrollBox';
                 document.querySelector('#close').addEventListener('click', e => {
                     e.preventDefault();
                     document.querySelector('#event').className = 'closed';
@@ -79,7 +79,7 @@ function expandEvent() {
             document.querySelector('#event').innerHTML = `<button id="close">X</button>
                 <p>Couldn't retrieve information about launch.</p>
                 <p>Error: ${err}</p>`
-                document.querySelector('#event').className = 'open';
+                document.querySelector('#event').className = 'open scrollBox';
                 document.querySelector('#close').addEventListener('click', e => {
                     e.preventDefault();
                     document.querySelector('#event').className = 'closed';

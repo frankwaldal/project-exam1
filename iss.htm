@@ -2,8 +2,16 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
+        <meta name="description" content="">
+        <meta name="keywords" content="">
+        <meta name="author" content="Frank Waldal">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>A Mars Adventure - ISS</title>
-        <link href="css/style.css" rel="stylesheet">
+        <link rel="stylesheet" href="css/commonStyles.css">
+        <link href="css/mobileStyles.css" media="screen and (max-width: 699px)" rel="stylesheet">
+        <link href="css/tabletStyles.css" media="screen and (min-width: 700px) and (max-width: 1199px)" rel="stylesheet">
+        <link href="css/lowResStyles.css" media="screen and (min-width: 1200px) and (max-width: 1799px)" rel="stylesheet">
+        <link rel='stylesheet' media='screen and (min-width: 1800px)' href='css/highResStyles.css'>
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
             integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
             crossorigin=""/>
@@ -23,8 +31,13 @@
                 <li><a href="launches.htm">Launches</a></li>
                 <li><a href="rockets.htm">Rockets</a></li>
             </ul>
+            <div id="mobileMenuButton">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
         </header>
-        <main id="viewHeight" class="scrollBox">
+        <main class="scrollBox">
             <h1 class="centerHeader">The Internation Space Station</h1>
             <div class="singleContainer">
                 <p>ISS is a space station in low Earth orbit, and is a joint program between NASA, Roscosmos, JAXA, ESA and CSA.</p>
@@ -44,7 +57,7 @@
             </div>
         </main>
         <button id="up">&#x2B06;</button>
-        <script src="js/scrollDetection.js"></script>
+        <script src="js/scrollMobileMenu.js"></script>
         <script src="js/iss.js"></script>
     </body>
 </html>

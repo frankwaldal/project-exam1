@@ -15,3 +15,11 @@ document.querySelector('#up').addEventListener('click', e => {
         document.querySelector('#up').style.display = 'none';
     },100);
 });
+
+document.querySelector('#mobileMenuButton').addEventListener('click', () => {
+    if (document.querySelector('header ul').style.display === 'flex') {
+        document.querySelector('header ul').style.display = 'none';
+    } else {
+        document.querySelector('header ul').style.display = 'flex';
+    }
+});
