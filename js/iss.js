@@ -23,7 +23,7 @@ var marker = L.marker([0, 0], {icon: mapIcon}).addTo(map);
 
 // Function to add marker of ISS' location and center the map at current location
 function issPosition() {
-    fetch('https://frankwaldal-eval-test.apigee.net/open-notify/iss-now.json')
+    fetch('https://cors-anywhere.herokuapp.com/http://api.open-notify.org/iss-now.json')
         .then(resolve => {
             resolve.json().then(respond => {
                 map.setView([respond.iss_position.latitude, respond.iss_position.longitude], 3);
@@ -31,7 +31,9 @@ function issPosition() {
                 marker.bindPopup(`The current possition of the ISS.<br> Lat: ${respond.iss_position.latitude}, Lon: ${respond.iss_position.longitude}`).openPopup();
             })
         })
-        .catch(err => {console.log(err)})
+        .catch(err => {
+            document.querySelector('#mapError').innerHTML = `We couldn't retrieve the current location of the ISS.<br>Error: ${err}`;
+        })
 }
 
 // Function to show next times ISS passes at coords retrieved from browsers geolocation-API
@@ -53,13 +55,15 @@ function issPassing() {
                     }
                 })
             })
-            .catch(err => {console.log(err)})
+            .catch(err => {
+                document.querySelector('#passingHeading').innerHTML = `We couldn't retrieve the next passings at your location.<br>Error: ${err}`;
+            })
     });
 }
 
 // Function to check which persons are in space and specifically at the ISS
 function issCrew() {
-    fetch('https://frankwaldal-eval-test.apigee.net/open-notify/astros.json')
+    fetch('https://cors-anywhere.herokuapp.com/http://api.open-notify.org/astros.json')
         .then(resolve => {
             resolve.json().then(respond => {
                 var crew = '';
@@ -71,7 +75,9 @@ function issCrew() {
                 document.querySelector('#crew').innerHTML = crew;
             })
         })
-        .catch(err => {console.log(err)})
+        .catch(err => {
+            document.querySelector('#crewHeading').innerHTML = `We couldn't retrieve current crew at ISS.<br>Error: ${err}`;
+        })
 }
 
 issPosition();
@@ -81,9 +87,3 @@ issPassing();
 issCrew();
 
 document.querySelector('#refresh').addEventListener('click', issPosition);
-
-
-// Fetch urls !!!Remove after decided which to use!!!
-
-// https://cors-anywhere.herokuapp.com/http://api.open-notify.org/
-// https://frankwaldal-eval-test.apigee.net/open-notify/
