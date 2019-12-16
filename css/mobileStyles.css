@@ -20,7 +20,6 @@ header h1 {
 }
 
 header ul {
-    display: none;
     flex-direction: column;
     margin: 0;
     padding: 0;
@@ -34,6 +33,14 @@ header ul {
     left: 0;
 }
 
+#mobileClosed {
+    display: none;
+}
+
+#mobileOpen {
+    display: flex;
+}
+
 header li {
     font-size: 22px;
     margin: 20px 0;
@@ -41,7 +48,7 @@ header li {
 }
 
 #mobileMenuButton {
-    width: 40px;
+    width: 46px;
     height: 36px;
     position: fixed;
     top: 10px;
@@ -49,13 +56,15 @@ header li {
 }
 
 #mobileMenuButton span {
-    width: 40px;
+    width: 46px;
     height: 4px;
     background: #eddd9d;
     position: absolute;
+    transition: .2s ease-in;
 }
 
 #mobileMenuButton span:first-child {
+    transform-origin: 0;
     right: 0;
     top: 0;
 }
@@ -66,6 +75,7 @@ header li {
 }
 
 #mobileMenuButton span:last-child {
+    transform-origin: 0;
     right: 0;
     top: 32px;
 }

@@ -17,9 +17,15 @@ document.querySelector('#up').addEventListener('click', e => {
 });
 
 document.querySelector('#mobileMenuButton').addEventListener('click', () => {
-    if (document.querySelector('header ul').style.display === 'flex') {
-        document.querySelector('header ul').style.display = 'none';
+    if (document.querySelector('header ul').id === 'mobileClosed') {
+        document.querySelector('header ul').id = 'mobileOpen';
+        document.querySelector('#mobileMenuButton span:first-child').style.transform = 'rotate(45deg)';
+        document.querySelector('#mobileMenuButton span:nth-child(2)').style.width = '0px';
+        document.querySelector('#mobileMenuButton span:last-child').style.transform = 'rotate(-45deg)';
     } else {
-        document.querySelector('header ul').style.display = 'flex';
+        document.querySelector('header ul').id = 'mobileClosed';
+        document.querySelector('#mobileMenuButton span:first-child').style.transform = 'rotate(0deg)';
+        document.querySelector('#mobileMenuButton span:nth-child(2)').style.width = '46px';
+        document.querySelector('#mobileMenuButton span:last-child').style.transform = 'rotate(0deg)';
     }
 });
