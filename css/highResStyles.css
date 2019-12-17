@@ -162,7 +162,7 @@ label input {
 }
 
 iframe {
-    min-height: 100%;
+    min-height: 500px;
 }
 
 .detailContainer {

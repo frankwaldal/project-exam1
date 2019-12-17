@@ -141,11 +141,15 @@ textarea {
 }
 
 .buttons {
-    margin: 30px;
+    margin: 30px 10px;
+    width: 208px;
+    display: flex;
+    align-self: flex-end;
+    justify-content: space-between;
 }
 
 #reset, #submit {
-    margin: 0 30px;
+    margin: 0;
     padding: 0 10px;
     height: 2.5em;
     border-radius: 8px;

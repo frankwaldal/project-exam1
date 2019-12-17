@@ -41,7 +41,7 @@ function aboutSpaceX() {
 
 // Function to fetch historical events for spacex, populates containers in spacex.htm with these events
 function historicalPopulate() {
-    fetch('https://api.spacexdata.com/v3/history')
+    fetch('https://api.spacexdata.com/v3/history?sort=event_date_utc&order=desc')
         .then(resolve => {
             resolve.json().then(respond => {
                 var content = '';

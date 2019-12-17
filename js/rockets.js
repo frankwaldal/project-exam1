@@ -235,7 +235,7 @@ function capsulesPopulate() {
     document.querySelectorAll('.openInfo').forEach(item => {
         item.removeEventListener('click', expandInfo);
     });
-    fetch('https://api.spacexdata.com/v3/capsules')
+    fetch('https://api.spacexdata.com/v3/capsules?order=desc')
         .then(resolve => {
             resolve.json().then(respond => {
                 var content = '';
@@ -296,7 +296,7 @@ function coresPopulate() {
     document.querySelectorAll('.openInfo').forEach(item => {
         item.removeEventListener('click', expandInfo);
     });
-    fetch('https://api.spacexdata.com/v3/cores')
+    fetch('https://api.spacexdata.com/v3/cores?order=desc')
         .then(resolve => {
             resolve.json().then(respond => {
                 var content = '';
