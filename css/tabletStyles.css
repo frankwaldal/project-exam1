@@ -52,10 +52,10 @@ p {
 }
 
 .gridContainer {
-    grid-template-rows: 20px auto auto auto auto;
+    grid-template-rows: 20px auto auto auto auto auto;
     grid-row-gap: 20px;
     grid-column-gap: 10px;
-    grid-template-areas: ". ." "text1 text2" "pic1 pic1" "pic2 pic2" "form form";
+    grid-template-areas: ". ." "text1 text2" "pic1 pic1" "pic2 pic2" "form form" "footer footer";
 }
 
 .indexText {
@@ -76,10 +76,6 @@ p {
 
 label input {
     height: 3em;
-}
-
-.singleContainer {
-    padding-bottom: 70px;
 }
 
 #map {
@@ -127,14 +123,6 @@ iframe {
     padding: 5px 20px;
 }
 
-.detailContainer:last-child {
-    margin-bottom: 70px;
-}
-
-#capsulesContainer .detailContainer:last-child {
-    margin-bottom: 20px;
-}
-
 .detailContainer h3 {
     margin: 10px 0;
 }
@@ -160,6 +148,10 @@ iframe {
 
 #links, #roles {
     margin-top: 20px;
+}
+
+.footer {
+    margin-bottom: 50px;
 }
 
 .spinner-error {

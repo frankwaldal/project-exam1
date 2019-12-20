@@ -191,7 +191,7 @@ blockquote {
     margin: 10px 40px;
 }
 
-blockquote a, #event a, #eventRight a, #eventLeft a, .detailContainer a, .indexText a {
+blockquote a, #event a, #eventRight a, #eventLeft a, .detailContainer a, .indexText a, .footer a {
     color: inherit;
     font-style: italic;
 }
@@ -282,4 +282,9 @@ blockquote a, #event a, #eventRight a, #eventLeft a, .detailContainer a, .indexT
 .historicalDate {
     align-self: flex-start;
     font-style: italic;
+}
+
+.footer {
+    text-align: center;
+    grid-area: footer;
 }

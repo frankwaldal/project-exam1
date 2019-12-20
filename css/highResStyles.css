@@ -45,11 +45,12 @@ main {
     grid-template-rows: 7vh auto auto auto auto 20px;
     grid-row-gap: 30px;
     grid-column-gap: 30px;
-    grid-template-areas: ". . . ." "text1 . pic1 pic1" ". text2 pic1 pic1" "pic2 pic2 form form" "pic2 pic2 form form" ". . . .";
+    grid-template-areas: ". . . ." "text1 . pic1 pic1" ". text2 pic1 pic1" "pic2 pic2 form form" "pic2 pic2 form form" ". footer footer .";
 }
 
 .flexContainer {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-around;
 }
 
@@ -207,6 +208,10 @@ iframe {
 
 #links, #roles {
     margin-top: 30px;
+}
+
+.footer {
+    width: 100%;
 }
 
 .spinner-error {
