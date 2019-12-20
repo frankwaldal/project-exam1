@@ -275,7 +275,7 @@ blockquote a, #event a, #eventRight a, #eventLeft a, .detailContainer a, .indexT
 
 .flights, .flightsRight {
     text-decoration: underline;
-    font-style: normal;
+    font-style: italic;
     cursor: pointer;
 }
 
