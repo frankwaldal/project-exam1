@@ -54,7 +54,7 @@ p {
     grid-template-rows: 7vh auto auto auto auto 20px;
     grid-row-gap: 20px;
     grid-column-gap: 20px;
-    grid-template-areas: ". . . ." "text1 text2 pic1 pic1" "text1 text2 pic1 pic1" "pic2 pic2 form form" "pic2 pic2 form form" ". footer footer .";
+    grid-template-areas: ". . . ." "text1 text2 pic1 pic1" "text1 text2 pic1 pic1" "pic2 pic2 form form" "pic2 pic2 form form" "footer footer footer footer";
 }
 
 .flexContainer {
