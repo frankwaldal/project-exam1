@@ -67,12 +67,12 @@ function historicalPopulate() {
                     }
                     content += `<div class="detailContainer">
                         <h3>${respond[i].title}</h3>
+                        <p class="historicalDate">${eventDate.toString().substring(4,15)}</p>
                         <div class="openInfo">
                             <span class="vertSpan"></span>
                             <span class="horiSpan"></span>
                         </div>
                         <div class="hidden">
-                            <p class="historicalDate">${eventDate.toString().substring(4,15)}</p>
                             <p>${respond[i].details}</p>
                             <br>
                             ${flight}

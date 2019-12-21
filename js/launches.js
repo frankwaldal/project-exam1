@@ -161,8 +161,22 @@ function pastLaunchPopulate() {
                 var content = '';
                 // Looping through returned array to create container for each launch
                 for (i=0;i<respond.length;i++) {
+                    var launchTime = '';
+                    if (respond[i].last_ll_launch_date === null || respond[i].last_ll_launch_date === undefined) {
+                        var launch = new Date(respond[i].launch_date_utc);
+                        launchTime = `<p class="historicalDate">${launch.toString().substring(4,15)}</p>`;
+                    } else {
+                        if (respond[i].launch_date_utc<respond[i].last_ll_launch_date) {
+                            var launch = new Date(respond[i].last_ll_launch_date);
+                            launchTime = `<p class="historicalDate">${launch.toString().substring(4,15)}</p>`;
+                        } else {
+                            var launch = new Date(respond[i].launch_date_utc);
+                            launchTime = `<p class="historicalDate">${launch.toString().substring(4,15)}</p>`;
+                        }
+                    }
                     content += `<div class="detailContainer">
                         <h3>${respond[i].mission_name}</h3>
+                        ${launchTime}
                         <div class="openInfo" id="flight${numeral(respond[i].flight_number).format('000')}">
                             <span class="vertSpan"></span>
                             <span class="horiSpan"></span>
