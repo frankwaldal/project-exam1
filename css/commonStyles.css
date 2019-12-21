@@ -45,6 +45,14 @@ header li {
     font-weight: bold;
 }
 
+header li:hover {
+    font-style: italic;
+}
+
+.current:hover {
+    font-style: normal;
+}
+
 .current {
     text-decoration: underline;
 }
