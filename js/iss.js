@@ -26,7 +26,7 @@ function issPosition() {
     fetch('https://cors-anywhere.herokuapp.com/http://api.open-notify.org/iss-now.json')
         .then(resolve => {
             resolve.json().then(respond => {
-                map.setView([respond.iss_position.latitude, respond.iss_position.longitude], 3);
+                map.setView([respond.iss_position.latitude, respond.iss_position.longitude], 4);
                 marker.setLatLng([respond.iss_position.latitude, respond.iss_position.longitude]);
                 marker.bindPopup(`The current possition of the ISS.<br> Lat: ${respond.iss_position.latitude}, Lon: ${respond.iss_position.longitude}`).openPopup();
             })
