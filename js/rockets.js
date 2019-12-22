@@ -231,10 +231,6 @@ function rightExpandEvent() {
 
 // Function to fetch SpaceX capsules, populates containers in rokets.htm with these capsules
 function capsulesPopulate() {
-    // Removes eventlisteners to avoid adding doubles
-    document.querySelectorAll('.openInfo').forEach(item => {
-        item.removeEventListener('click', expandInfo);
-    });
     fetch('https://api.spacexdata.com/v3/capsules?order=desc')
         .then(resolve => {
             resolve.json().then(respond => {
@@ -258,7 +254,7 @@ function capsulesPopulate() {
                     }
                     content += `<div class="detailContainer">
                         <h3>${respond[i].type} - ${respond[i].capsule_serial}</h3>
-                        <div class="openInfo">
+                        <div class="openInfo openCapsule">
                             <span class="vertSpan"></span>
                             <span class="horiSpan"></span>
                         </div>
@@ -278,7 +274,7 @@ function capsulesPopulate() {
                 document.querySelectorAll('.flights').forEach(item => {
                     item.addEventListener('click', leftExpandEvent);
                 });
-                document.querySelectorAll('.openInfo').forEach(item => {
+                document.querySelectorAll('.openCapsule').forEach(item => {
                     item.addEventListener('click', expandInfo);
                 });
             })
@@ -292,10 +288,6 @@ function capsulesPopulate() {
 
 // Function to fetch SpaceX cores, populates containers in rokets.htm with these cores
 function coresPopulate() {
-    // Removes eventlisteners to avoid adding doubles
-    document.querySelectorAll('.openInfo').forEach(item => {
-        item.removeEventListener('click', expandInfo);
-    });
     fetch('https://api.spacexdata.com/v3/cores?order=desc')
         .then(resolve => {
             resolve.json().then(respond => {
@@ -339,7 +331,7 @@ function coresPopulate() {
                     }
                     content += `<div class="detailContainer">
                         <h3>${respond[i].core_serial}</h3>
-                        <div class="openInfo">
+                        <div class="openInfo openCores">
                             <span class="vertSpan"></span>
                             <span class="horiSpan"></span>
                         </div>
@@ -359,7 +351,7 @@ function coresPopulate() {
                 document.querySelectorAll('.flightsRight').forEach(item => {
                     item.addEventListener('click', rightExpandEvent);
                 });
-                document.querySelectorAll('.openInfo').forEach(item => {
+                document.querySelectorAll('.openCores').forEach(item => {
                     item.addEventListener('click', expandInfo);
                 });
             })
